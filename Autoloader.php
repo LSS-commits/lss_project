@@ -1,7 +1,7 @@
 <?php
 // détection automatique des instanciations de classes (pour charger les fichiers des classes sans require)
 
-namespace MotusProjectLSS;
+namespace LSSProject;
 
 class Autoloader
 {

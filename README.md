@@ -20,6 +20,7 @@ Project carried out as part of my application to enter the 3rd year of the Bache
 ## Améliorations possibles | Possible improvements
 - Rôle et dashboard administrateur avec CRUD pour gérer les utilisateurs
 - Site multilingue : français et anglais
+- Utiliser PHP 8.1 pour Enums (pour gérer les difficultés dans la table des mots)
 
 ## Ressources | Resources
 [Motus, histoire et explications](https://fr.wikipedia.org/wiki/Motus_(jeu_t%C3%A9l%C3%A9vis%C3%A9))
@@ -28,3 +29,4 @@ Project carried out as part of my application to enter the 3rd year of the Bache
 
 [PHP orienté objet / objected-oriented PHP](https://nouvelle-techno.fr/series/php-oriente-objet)
 
+[Enums, PHP 8.1](https://www.php.net/manual/fr/language.enumerations.examples.php)

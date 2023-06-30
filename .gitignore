@@ -1,4 +1,5 @@
-# misc
+# environment
 /.env
 
+# misc
 /project_descr.txt

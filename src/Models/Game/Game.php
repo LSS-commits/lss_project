@@ -1,11 +1,11 @@
 <?php
-namespace MotusProjectLSS\Game;
+namespace LSSProject\Src\Models\Game;
 
 // injection de dépendance (la classe User est passée en argment du constructeur de la classe Game)
-use MotusProjectLSS\Users\User;
+use LSSProject\Src\Models\Users\User;
 
 /**
- * Objet Game
+ * Modèle pour la table Game
  */
 
 class Game

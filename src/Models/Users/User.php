@@ -1,10 +1,12 @@
 <?php
-namespace MotusProjectLSS\Users;
+namespace LSSProject\Src\Models\Users;
+
+use LSSProject\Src\Models\Model;
 
 /**
- * Objet User
+ * Modèle pour la table users
  */
-class User 
+class User extends Model
 {
     /**
      * username
