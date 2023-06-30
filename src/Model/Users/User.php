@@ -1,6 +1,9 @@
 <?php
 namespace MotusProjectLSS\Users;
 
+/**
+ * User object
+ */
 class User 
 {
     /**
@@ -21,4 +24,11 @@ class User
      */
 
     private $password;
+
+    public function __construct(string $username, string $email, string $password)
+    {
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;
+    }
 }
