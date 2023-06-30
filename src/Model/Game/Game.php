@@ -1,6 +1,7 @@
 <?php
 namespace MotusProjectLSS\Game;
 
+// injection de dépendance (la classe User est passée en argment du constructeur de la classe Game)
 use MotusProjectLSS\Users\User;
 
 /**
