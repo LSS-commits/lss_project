@@ -2,7 +2,7 @@
 namespace MotusProjectLSS\Users;
 
 /**
- * User object
+ * Objet User
  */
 class User 
 {
