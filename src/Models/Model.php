@@ -44,10 +44,10 @@ class Model extends Db
         }
 
         // transformer le tableau fields en une string pour concaténer les champs
-        $fields_str = implode(' AND ', $fields);
+        $fieldsStr = implode(' AND ', $fields);
         
         // exécuter la requête
-        return $this->model_query('SELECT * FROM ' . $this->table . ' WHERE ' . $fields_str, $values)->fetchAll();
+        return $this->model_query('SELECT * FROM ' . $this->table . ' WHERE ' . $fieldsStr, $values)->fetchAll();
     }
 
     /**
@@ -85,11 +85,11 @@ class Model extends Db
         }
 
         // transformer le tableau fields en une string pour concaténer les champs
-        $fields_str = implode(', ', $fields);
-        $interrogation_str = implode(', ', $interrogation);
+        $fieldsStr = implode(', ', $fields);
+        $interrogationStr = implode(', ', $interrogation);
         
         // exécuter la requête
-        return $this->model_query('INSERT INTO ' . $this->table . ' (' . $fields_str . ') VALUES (' . $interrogation_str . ')', $values);
+        return $this->model_query('INSERT INTO ' . $this->table . ' (' . $fieldsStr . ') VALUES (' . $interrogationStr . ')', $values);
     }
 
 
@@ -117,10 +117,10 @@ class Model extends Db
         $values[] = $id;
 
         // transformer le tableau fields en une string pour concaténer les champs
-        $fields_str = implode(', ', $fields);
+        $fieldsStr = implode(', ', $fields);
         
         // exécuter la requête
-        return $this->model_query('UPDATE ' . $this->table . ' SET ' . $fields_str . ' WHERE id = ?', $values);
+        return $this->model_query('UPDATE ' . $this->table . ' SET ' . $fieldsStr . ' WHERE id = ?', $values);
     }
 
     // DELETE

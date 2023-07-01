@@ -8,29 +8,104 @@ use LSSProject\Src\Models\Model;
  */
 class User extends Model
 {
-    /**
-     * username
-     * @var str
-     */
-    private $username;
-    
-    /**
-     * email
-     * @var str
-     */
-    private $email;
+    protected $id;
+    protected $username;
+    protected $email;
+    protected $password;
+    protected $roles;
+
+    public function __construct()
+    {
+        $this->table = 'users';
+    }
 
     /**
-     * password
-     * @var str
+     * Obtenir la valeur de id
      */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    private $password;
+    /**
+     * Définir la valeur de id
+     */
+    public function setId($id): self
+    {
+        $this->id = $id;
 
-    public function __construct(string $username, string $email, string $password)
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Définir la valeur de username
+     */
+    public function setUsername($username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Définir la valeur de email
+     */
+    public function setEmail($email): self
+    {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de password
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Définir la valeur de password
+     */
+    public function setPassword($password): self
+    {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de roles
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Définir la valeur de roles
+     */
+    public function setRoles($roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 }
