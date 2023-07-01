@@ -14,7 +14,7 @@ class DifficultyLevel{
     private const HARD = "Hard";
 
     // récupérer le niveau par son nom
-    public static function getDifficulty($value)
+    public static function getDifficultyLevel($value)
     {
         // retourner la valeur validée sinon null
         if(self::isValid($value) === true){
