@@ -63,6 +63,7 @@ class Game extends Model
      */
     public function getWordId()
     {
+        // TODO: récupérer l'id du mot joué
         return $this->wordId;
     }
 
@@ -71,8 +72,8 @@ class Game extends Model
      */
     public function setWordId($wordId): self
     {
+        // TODO: récupérer l'id du mot joué
         $this->wordId = $wordId;
-
         return $this;
     }
 
@@ -89,8 +90,8 @@ class Game extends Model
      */
     public function setScore($score): self
     {
+        // TODO: (word length * 3) - guesses => effectuer le calcul dans le controller ?
         $this->score = $score;
-
         return $this;
     }
 
@@ -99,6 +100,7 @@ class Game extends Model
      */
     public function getUserId()
     {
+        // TODO: récupérer l'id du joueur connecté
         return $this->userId;
     }
 
@@ -107,6 +109,7 @@ class Game extends Model
      */
     public function setUserId($userId): self
     {
+        // TODO: récupérer l'id du joueur connecté
         $this->userId = $userId;
 
         return $this;
