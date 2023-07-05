@@ -55,8 +55,8 @@ class Main
             $action = (isset($params[0])) ? array_shift($params) : 'index';
 
             if(method_exists($controller, $action)){
-                // si il reste des params, on les passe à la méthode
-                (isset($params[0])) ? $controller->$action($params) : $controller->$action();
+                // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
+                (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
             }
             else{
                 // la méthode n'existe pas dans le controller, 404
