@@ -16,6 +16,7 @@ Project carried out as part of my application to enter the 3rd year of the Bache
 
 - Programmation orientée objet / Object-oriented programming
 
+- Bootstrap 5.3
 
 ## Améliorations possibles | Possible improvements
 - Rôle et dashboard administrateur avec CRUD pour gérer les utilisateurs

@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&family=Noto+Sans:wght@300;400&display=swap');
+html, body{
+    font-family: 'Noto Sans', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, a, span{
+    font-family: 'Mina', sans-serif !important;
+}
+
+/* TODO: hover on a tags */
+

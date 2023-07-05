@@ -2,6 +2,7 @@
 
 namespace LSSProject\Src\Controllers;
 
+// TODO: servira plus tard pour connexion, inscription, déconnexion et CRUD utilisateurs
 class UserController extends Controller
 {
     public function index()
