@@ -6,6 +6,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        echo "This is the homepage of LSS project Motus";
+        include_once ROOT.'/Views/main/index.php';
     }
 }

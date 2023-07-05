@@ -5,7 +5,7 @@ use LSSProject\Src\Controllers\MainController;
 
 /**
  * Routeur principal
- * va chercher et lire les URLs (couplé avec public/index.php)
+ * va chercher et lire les URLs (couplé avec public/index.php) et appelle les controllers correspondants
  */
 class Main 
 {
@@ -15,7 +15,6 @@ class Main
         // retirer un éventuel trailing slash de l'url (pour éviter le duplicate content)
         // récupérer l'url
         $uri = $_SERVER['REQUEST_URI'];
-
         // vérifier que $uri n'est pas vide et se termine par un /
         if (!empty($uri) && $uri != "/" && $uri[-1] === "/"){
             // retirer le dernier slash
@@ -36,31 +35,35 @@ class Main
             $params = explode('/', $_GET['p']);
         }
 
-        // TODO: page 404 si le controller n'existe pas
-
         // vérifier si il y a au moins 1 paramètre
         if($params[0] != ''){
             // nom du controller à instancier
             $controller = '\\LSSProject\\Src\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
             
-            // instancier le controller
-            $controller = new $controller;
-            
+            // vérifier si le controller existe
+            if (class_exists($controller)) {
+                // instancier le controller
+                $controller = new $controller;
+            }else{
+                // le controller n'existe pas, 404
+                http_response_code(404);
+                header('Location: /notfound');
+            }
+
             // récupérer un éventuel deuxième paramètre = action (méthode)
             // sinon passer méthode index() cad page d'accueil
             $action = (isset($params[0])) ? array_shift($params) : 'index';
+
             if(method_exists($controller, $action)){
                 // si il reste des params, on les passe à la méthode
                 (isset($params[0])) ? $controller->$action($params) : $controller->$action();
-
-            }else{
-                http_response_code(404);
-
-
-                // TODO: rediriger vers la page 404
-                // header('Location: ');
-                echo "This page doesn't exist";
             }
+            else{
+                // la méthode n'existe pas dans le controller, 404
+                http_response_code(404);
+                header('Location: /notfound');
+            }  
+
         }else{
             // si pas de paramètre dans l'URL, instancier le controller par défaut (page d'accueil)
             $controller = new MainController;

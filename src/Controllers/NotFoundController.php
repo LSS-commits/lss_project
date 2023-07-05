@@ -5,8 +5,10 @@ namespace LSSProject\Src\Controllers;
 // TODO: à revoir
 class NotFoundController extends Controller
 {
-    public function pageNotFound()
+    public function index()
     {
-        $this->render('notfound/pageNotFound', [], '404');
+        include_once ROOT.'/Views/notfound.php';
+
+        // $this->render('notfound/pageNotFound', [], 'notfound');
     }
 }

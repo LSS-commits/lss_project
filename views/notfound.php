@@ -6,7 +6,8 @@
     <title>LSS Project - Page not found</title>
 </head>
 <body>
-    <h1>Uh-oh...</h1>
+    <!-- TODO: ajouter liens de retour vers page d'accueil ou dashboard -->
+    <h1>Uh oh...</h1>
     <h2>It could be you, or it could be us, but there's no page here!</h2>
 </body>
 </html>
