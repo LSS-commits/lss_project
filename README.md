@@ -19,6 +19,7 @@ Project carried out as part of my application to enter the 3rd year of the Bache
 
 ## Améliorations possibles | Possible improvements
 - Rôle et dashboard administrateur avec CRUD pour gérer les utilisateurs
+- CRUD utilisateur pour modifications des informations personnelles
 - Site multilingue : français et anglais
 - Utiliser PHP 8.1 pour Enums (pour gérer les difficultés dans la table des mots)
 
