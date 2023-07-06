@@ -67,7 +67,7 @@ class Main
                         $controller = new NotFoundController();
                         $controller->index();
                         
-                    } else {
+                    }else{
                         // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
                         (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
                     }

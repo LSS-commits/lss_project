@@ -21,7 +21,7 @@ class ProfileController extends Controller
         // on va chercher l'utilisateur connecté
         $user = $userModel->find($userId);
 
-        // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('/dir/file', compact('variable'))
-        $this->render('user/profile', compact('user'));
+        // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
+        $this->render('logged/profile', compact('user'));
     }
 }

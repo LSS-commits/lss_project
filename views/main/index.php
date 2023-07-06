@@ -1,17 +1,84 @@
-<!-- PAGE D'ACCUEIL -->
-<div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <img src="/assets/images/motus_img.jpg" class="d-block mx-lg-auto img-fluid rounded" alt="motus img" width="700" height="500" loading="lazy">
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Mo Mo Mo Motus Game, by LSS</h1>
-            <p class="lead">Inspired by the popular French game show, Motus by LSS is a challenging word guessing game designed to test people of all ability levels. All you need is a keyboard (🎹... this one 👉 ⌨️), so start the fun and improve your word knowledge for free online!</p>
-            <div class="d-grid gap-3 justify-content-md-start">
-                <a href="#" class="btn btn-primary btn-lg px-4 me-md-2" role="button">Start</a>
-                <span class="text-center">OR to create your account</span>
-                <a href="#" class="btn btn-outline-dark btn-lg px-4" role="button">Register</a>
-            </div>
-        </div>
-    </div>
-</div>
+<?php
+// use LSSProject\Autoloader;
+// use LSSProject\Src\Models\Game\Game;
+// use LSSProject\Src\Models\Game\Word;
+// use LSSProject\Src\Models\Users\User;
+
+// // pour charger les fichiers des classes automatiquement (Autoloader)
+// require_once dirname(__DIR__).'/Autoloader.php';
+// Autoloader::registerAutoloader();
+
+
+// // $model = new User();
+// // $user2 = $model
+// //     ->setUsername('test2')
+// //     ->setEmail('test2@gmail.com')
+// //     ->setPassword(password_hash('yuiop', PASSWORD_ARGON2I))
+// //     ->setRoles('["ROLE_USER", "ROLE_ADMIN"]');
+
+// // $model->create($user2);
+// // var_dump($user2);
+
+// // $model = new Word();
+// // $word1 = $model
+// //     ->setWord('word')
+// //     ->setLength()
+// //     ->setDifficulty();
+
+// // $model->create($word1);
+// // var_dump($word1);
+
+// // $model = new Word();
+
+// // // écrire null pour les champs dont les setters ne prennent pas de paramètres
+// // $data = [
+// //     'word' => "tapestry",
+// //     'length' => null,
+// //     'difficulty' => null
+// // ];
+
+// // $word2 = $model->hydrate($data);
+
+// // $model->create($word2);
+// // var_dump($word2);
+
+// // $model = new Word();
+// // $data = [
+// //     'word' => 'chocolate',
+// //     'length' => null,
+// //     'difficulty' => null
+// // ];
+
+// // $word = $model->hydrate($data);
+// // // mettre à jour le 2e enregistrement de la table
+// // $model->update(2, $word);
+// // var_dump($word);
+
+
+// // $model = new Word();
+// // $word3 = $model->find(3);
+// // // supprimer l'enregistrement de la table
+// // affiche la requête ou le message 'Entry was not found'
+// // var_dump($model->delete(3));
+
+// $model = new Game();
+// $user = new User();
+// $user = $user->find(2);
+// $word = new Word();
+// $word = $word->find(1);
+// // NB les données récupérées en bdd sont des strings
+
+// // score = (nombre de lettres x 3) - guesses
+// // guesses atteint 5 max (6 coups autorisés)
+// $data = [
+//     'guesses' => 5,
+//     'wordId' => intval($word['id']),
+//     'userId' => intval($user['id'])
+// ];
+
+// $game1 = $model->hydrate($data);
+// // au premier coup, guesses => 0 (boucle)
+// $game1 = $model->setScore((intval($word['length']) * 3) - $model->getGuesses());
+// var_dump($game1);
+// // accéder aux mot et infos user
+// var_dump($word['word'], $user['username']);

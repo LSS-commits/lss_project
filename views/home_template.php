@@ -11,7 +11,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/home_styles.css">
-    
+    <link rel="stylesheet" href="/css/login_styles.css">
+  
     <title><?= $title ?? "LSS Project - Motus" ?></title>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
 </head>
@@ -19,7 +20,7 @@
 <body>
 
     <!-- Injecter le contenu de la page correspondante -->
-    <div class="container">
+    <div class="container page-content">
         <?= $content; ?>
     </div>
 

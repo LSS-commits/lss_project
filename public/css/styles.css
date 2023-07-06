@@ -6,17 +6,37 @@
 
 html, body{
     font-family: 'Noto Sans', sans-serif !important;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0
+}
+
+.page-content {
+    margin-top: 60px
 }
 
 h1, h2, h3, h4, h5, h6, a, span{
-    font-family: 'Mina', sans-serif !important;
+    font-family: 'Mina', sans-serif !important
 }
 
 a, .btn{
     transition: .3s !important
 }
 
+.link:hover{
+    color: var(--color1) !important
+}
+
 /* FOOTER */
+/* TODO: fixed bottom ??? récupérer la hauteur du footer dynamiquement */
+.footer {
+    width: 100%;
+    /* position: fixed;
+    bottom: 0; */
+}
+
+
 footer i {
     font-size: 24px;
     color: var(--color1)

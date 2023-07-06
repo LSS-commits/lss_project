@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $wordModel = new Word();
         $words = $wordModel->findAll();
 
-        // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('/dir/file', compact('variable'))
-        $this->render('user/dashboard', compact('user', 'words'));
+        // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
+        $this->render('logged/dashboard', compact('user', 'words'));
     }
 }

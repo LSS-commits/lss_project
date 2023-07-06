@@ -1,6 +1,6 @@
 <!-- FOOTER -->
-<div class="container bg-dark">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">   
+<div class="bg-dark footer">
+    <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 mt-4">   
         <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-light text-decoration-none lh-1">
                 <img src="/assets/images/icon.png" alt="lss project icon" width="50" height="50">

@@ -12,5 +12,5 @@
         ?>
     </p>
     <p>Coming soon: change password</p>
-    <a href="/dashboard/user/<?= $user->id ?>">Back to dashboard</a>
+    <a href="/dashboard/user/<?= $user->id ?>" class="link link-secondary">Back to dashboard</a>
 </article>

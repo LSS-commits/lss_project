@@ -21,7 +21,7 @@
     <?php include_once ROOT.'/Views/includes/header.php'; ?>
 
     <!-- Injecter le contenu de la page correspondante -->
-    <div class="container">
+    <div class="container page-content">
         <?= $content; ?>
     </div>
 
