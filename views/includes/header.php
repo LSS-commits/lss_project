@@ -7,14 +7,14 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">New game</a></li>
+        <li><a href="#" class="nav-link px-2 text-black">New game</a></li>
         <!-- TODO: récupérer l'id de l'utilisateur -->
-        <li><a href="/dashboard/user/<?= 1 ?>" class="nav-link px-2 text-black">Dashboard</a></li>
-        <li><a href="/profile/user/<?= 1 ?>" class="nav-link px-2 text-black">Profile</a></li>
+        <li><a href="/dashboard/user/<?= 1 ?>" class="nav-link px-2 text-secondary">Dashboard</a></li>
+        <li><a href="/profile/user/<?= 1 ?>" class="nav-link px-2 text-secondary">Profile</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-secondary me-2">Logout</button>
+        <button type="button" class="btn btn-outline-secondary me-2"><i class="fa-solid fa-power-off"></i> Logout</button>
       </div>
     </header>
   </div>
