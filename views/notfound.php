@@ -10,6 +10,6 @@
     <h2><?= $content[1] ?></h2>
     <p><?= $content[2] ?></p>
     <!-- TODO: Si l'utilisateur est connecté, dashboard, sinon accueil -->
-    <a href="/">Back to home page</a>
+    <a href="/" class="link link-dark">Back to home page</a>
 </body>
 </html>
