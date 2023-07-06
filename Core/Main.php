@@ -2,6 +2,8 @@
 namespace LSSProject\Core;
 
 use LSSProject\Src\Controllers\MainController;
+use LSSProject\Src\Controllers\NotFoundController;
+use ReflectionMethod;
 
 /**
  * Routeur principal
@@ -16,7 +18,7 @@ class Main
         // récupérer l'url
         $uri = $_SERVER['REQUEST_URI'];
         // vérifier que $uri n'est pas vide et se termine par un /
-        if (!empty($uri) && $uri != "/" && $uri[-1] === "/"){
+        if (!empty($uri) && $uri[-1] === "/" && $uri != "/"){
             // retirer le dernier slash
             $uri = substr($uri, 0, -1);
 
@@ -26,12 +28,15 @@ class Main
             // rediriger vers l'URL sans le /
             header('Location: '.$uri);
         }
-
+        
         // gérer les paramètres d'URL
+
         // récupérer les params sous forme de tableau
         $params = [];
-        // vérifier si des paramètres sont passés (p existe)
+
+        // vérifier si des paramètres sont passés (p=controller/method/params)
         if(isset($_GET['p'])){
+            // séparer les params dans un tableau
             $params = explode('/', $_GET['p']);
         }
 
@@ -40,28 +45,40 @@ class Main
             // nom du controller à instancier
             $controller = '\\LSSProject\\Src\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
             
-            // vérifier si le controller existe
-            if (class_exists($controller)) {
-                // instancier le controller
-                $controller = new $controller;
-            }else{
-                // le controller n'existe pas, 404
-                http_response_code(404);
-                header('Location: /notfound');
-            }
+            
+            // instancier le controller
+            $controller = new $controller;
 
             // récupérer un éventuel deuxième paramètre = action (méthode)
             // sinon passer méthode index() cad page d'accueil
             $action = (isset($params[0])) ? array_shift($params) : 'index';
 
+            // vérifier si la méthode existe
             if(method_exists($controller, $action)){
-                // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
-                (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
-            }
-            else{
-                // la méthode n'existe pas dans le controller, 404
+
+                // vérifier si la méthode prend des paramètres
+                $actionParams = new ReflectionMethod($controller, $action);
+
+                if ($actionParams->getParameters() != [] && !isset($params[0])) {
+                    // var_dump($actionParams->getParameters());
+                    // echo "Manque des paramètres";
+
+                    // si il manque des paramètres à la méthode, 404
+                    http_response_code(404);
+                    $controller = new NotFoundController();
+                    $controller->index();
+                } else {
+                    // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
+                    (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
+                }
+                
+            }else{
+                
+                // la méthode n'existe pas dans le controller, afficher la page 404
                 http_response_code(404);
-                header('Location: /notfound');
+                // echo "This page does not exist";
+                $controller = new NotFoundController();
+                $controller->index();
             }  
 
         }else{

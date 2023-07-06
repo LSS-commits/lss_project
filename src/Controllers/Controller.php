@@ -21,7 +21,6 @@ abstract class Controller
         // stocker le buffer dans une variable $content
         // ici le buffer contient le html de la vue et les données insérées dans les balises
         $content = ob_get_clean();
-
         // envoyer le tout au template default.php
         require_once ROOT.'/Views/default.php';  
     }
