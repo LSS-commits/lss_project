@@ -6,9 +6,10 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <!-- TODO: ajouter liens de retour vers page d'accueil ou dashboard -->
     <h1><?= $content[0] ?></h1>
     <h2><?= $content[1] ?></h2>
     <p><?= $content[2] ?></p>
+    <!-- TODO: Si l'utilisateur est connecté, dashboard, sinon accueil -->
+    <a href="/">Back to home page</a>
 </body>
 </html>

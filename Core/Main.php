@@ -40,47 +40,54 @@ class Main
             $params = explode('/', $_GET['p']);
         }
 
-        // vérifier si il y a au moins 1 paramètre
+        // vérifier si il y a au moins 1 paramètre = controller
         if($params[0] != ''){
             // nom du controller à instancier
             $controller = '\\LSSProject\\Src\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
-            
-            
-            // instancier le controller
-            $controller = new $controller;
 
-            // récupérer un éventuel deuxième paramètre = action (méthode)
-            // sinon passer méthode index() cad page d'accueil
-            $action = (isset($params[0])) ? array_shift($params) : 'index';
+            if (class_exists($controller)) {
+                // instancier le controller
+                $controller = new $controller;
 
-            // vérifier si la méthode existe
-            if(method_exists($controller, $action)){
+                // récupérer un éventuel deuxième paramètre = action (méthode)
+                // sinon appeler méthode index() du controller
+                $action = (isset($params[0])) ? array_shift($params) : 'index';
+                
+                // vérifier si la méthode existe
+                if(method_exists($controller, $action)){
+                    // vérifier si la méthode prend des paramètres
+                    $actionParams = new ReflectionMethod($controller, $action);
 
-                // vérifier si la méthode prend des paramètres
-                $actionParams = new ReflectionMethod($controller, $action);
+                    if ($actionParams->getParameters() != [] && !isset($params[0])) {
+                        // var_dump($actionParams->getParameters());
+                        // echo "Manque des paramètres";
 
-                if ($actionParams->getParameters() != [] && !isset($params[0])) {
-                    // var_dump($actionParams->getParameters());
-                    // echo "Manque des paramètres";
-
-                    // si il manque des paramètres à la méthode, 404
+                        // si il manque des paramètres à la méthode, 404
+                        http_response_code(404);
+                        $controller = new NotFoundController();
+                        $controller->index();
+                        
+                    } else {
+                        // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
+                        (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
+                    }
+                    
+                }else{
+                    
+                    // la méthode n'existe pas dans le controller, afficher la page 404
                     http_response_code(404);
+                    // echo "This page does not exist";
                     $controller = new NotFoundController();
                     $controller->index();
-                } else {
-                    // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
-                    (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
-                }
-                
+                }  
+
             }else{
-                
-                // la méthode n'existe pas dans le controller, afficher la page 404
+                // le controller n'existe pas, afficher la page 404
                 http_response_code(404);
-                // echo "This page does not exist";
                 $controller = new NotFoundController();
                 $controller->index();
-            }  
-
+            }
+            
         }else{
             // si pas de paramètre dans l'URL, instancier le controller par défaut (page d'accueil)
             $controller = new MainController;

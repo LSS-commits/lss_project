@@ -6,7 +6,14 @@ namespace LSSProject\Src\Controllers;
  */
 abstract class Controller 
 {
-    public function render(string $file, array $data = [])
+    /**
+     * Afficher une vue
+     *
+     * @param string $file
+     * @param array $data
+     * @return void
+     */
+    public function render(string $file, array $data = [], string $template = 'default_template')
     {
         // extraire le contenu de $data
         extract($data);
@@ -21,7 +28,8 @@ abstract class Controller
         // stocker le buffer dans une variable $content
         // ici le buffer contient le html de la vue et les données insérées dans les balises
         $content = ob_get_clean();
-        // envoyer le tout au template default.php
-        require_once ROOT.'/Views/default.php';  
+
+        // envoyer le tout au template (template indiqué dans le controller ou template par défaut)
+        require_once ROOT.'/Views/' . $template . '.php';  
     }
 }
