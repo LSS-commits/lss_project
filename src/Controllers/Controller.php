@@ -11,6 +11,7 @@ abstract class Controller
      *
      * @param string $file
      * @param array $data
+     * @param string $template
      * @return void
      */
     public function render(string $file, array $data = [], string $template = 'default_template')
