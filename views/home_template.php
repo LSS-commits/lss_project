@@ -20,7 +20,7 @@
 <body>
 
     <!-- Injecter le contenu de la page correspondante -->
-    <div class="container page-content">
+    <div class="page-content">
         <?= $content; ?>
     </div>
 
