@@ -203,4 +203,31 @@ class Form
 
         return $this;
     }
+
+    /**
+     * Générer une balise ouvrante en précisant son nom et ses attributs éventuels
+     *
+     * @param string $tag Nom de la balise
+     * @param array $attributes Attributs complémentaires (tableau vide par défaut)
+     * @return Form Retourne l'objet
+     */
+    public function addTagStart(string $tag, array $attributes = []): self
+    {
+        $this->formCode .= "<$tag ";
+        $this->formCode .= $attributes ? $this->addAttributes($attributes) . '>' : '>';
+        return $this;
+    }
+
+    /**
+     * Générer une balise fermante 
+     *
+     * @param string $tag Nom de la balise
+     * @return Form Retourne l'objet
+     */
+    public function addTagEnd(string $tag): self
+    {
+        $this->formCode .= "</$tag>";
+    
+        return $this;
+    }
 }

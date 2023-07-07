@@ -23,14 +23,15 @@ class LoginController extends Controller
         $form = new Form();
 
         $form->startForm()
-            ->addLabelFor('email', 'Email')
-            ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'required' => true])
+            ->addTagStart('div', ['class' => 'form-floating'])
+            ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'name@example.com','aria-placeholder' => 'name@example.com', 'required' => true])
+            ->addLabelFor('email', 'Email address')
+            ->addTagEnd('div')
+            ->addTagStart('div', ['class' => 'form-floating'])
+            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true])
             ->addLabelFor('passw', 'Password')
-            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'required' => true])
-            ->addSelect('level', ['Easy' => ['Easy', ['selected' => true]], 'Normal' => ['Normal', []], 'Hard' => ['Hard', []]], ['id' => 'level'])
-            ->addInput('checkbox', 'acceptPolicy', ['id' => 'acceptPolicy', 'name' => 'acceptPolicy', 'value' => 1])
-            ->addLabelFor('acceptPolicy', 'I accept the website\'s policy')
-            ->addButton('Sign in', ['type' => 'button', 'class' => 'btn btn-primary'])
+            ->addTagEnd('div')
+            ->addButton('Sign in', ['type' => 'button', 'class' => 'btn btn-primary w-100 py-2'])
             ->endForm();
 
 
