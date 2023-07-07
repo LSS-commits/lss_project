@@ -4,16 +4,17 @@
     --color1: #8449BC; /* purple */
 }
 
+
 html, body{
     font-family: 'Noto Sans', sans-serif !important;
-    height: 100%;
-    width: 100%;
     margin: 0;
     padding: 0
 }
 
 .page-content {
-    margin-top: 60px
+    margin-top: 30px;
+    margin-bottom: 60px;
+    padding-bottom: 140px
 }
 
 h1, h2, h3, h4, h5, h6, a, span{
@@ -28,16 +29,19 @@ a, .btn{
     color: var(--color1) !important
 }
 
-/* FOOTER */
-/* TODO: fixed bottom ??? récupérer la hauteur du footer dynamiquement */
-.footer {
-    width: 100%;
-    /* position: fixed;
-    bottom: 0; */
+img{
+    border-radius: 5px
 }
 
+/* FOOTER */
+.footer {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: fixed
+}
 
-footer i {
+.footer i {
     font-size: 24px;
     color: var(--color1)
 }
