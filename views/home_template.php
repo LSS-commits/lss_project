@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/home_styles.css">
     <link rel="stylesheet" href="/css/login_styles.css">
   
-    <title><?= $title ?? "LSS Project - Motus" ?></title>
+    <title><?= $title ?? "LSSProject - Motus" ?></title>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
 </head>
 

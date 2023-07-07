@@ -10,6 +10,9 @@ class RegisterController extends Controller
 
     public function index()
     {
-        $this->render('/register', [], 'home_template');
+        // définir le titre de la page HTML
+        $title = "LSSProject - Register";
+
+        $this->render('/register', compact('title'), 'home_template');
     }
 }

@@ -25,7 +25,10 @@ class DashboardController extends Controller
         $wordModel = new Word();
         $words = $wordModel->findAll();
 
+        // définir le titre de la page HTML
+        $title = "LSSProject - Dashboard";
+
         // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
-        $this->render('logged/dashboard', compact('user', 'words'));
+        $this->render('logged/dashboard', compact('title', 'user', 'words'));
     }
 }

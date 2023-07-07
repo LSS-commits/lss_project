@@ -21,7 +21,10 @@ class ProfileController extends Controller
         // on va chercher l'utilisateur connecté
         $user = $userModel->find($userId);
 
+        // définir le titre de la page HTML
+        $title = "LSSProject - Profile";
+
         // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
-        $this->render('logged/profile', compact('user'));
+        $this->render('logged/profile', compact('title', 'user'));
     }
 }
