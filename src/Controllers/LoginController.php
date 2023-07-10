@@ -18,11 +18,12 @@ class LoginController extends Controller
      */
     public function index()
     {
+        var_dump($_POST);
 
         // créer le formulaire
         $form = new Form();
 
-        $form->startForm()
+        $form->startForm('#', 'post', ['id' => 'loginForm'])
             ->addTagStart('div', '', ['class' => 'form-floating'])
             ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'name@example.com','aria-placeholder' => 'name@example.com', 'required' => true])
             ->addLabelFor('email', 'Email address')
@@ -31,7 +32,11 @@ class LoginController extends Controller
             ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true])
             ->addLabelFor('passw', 'Password')
             ->addTagEnd('div')
-            ->addButton('Sign in', ['type' => 'button', 'class' => 'btn btn-primary w-100 py-2'])
+            ->addButton('Sign in', ['type' => 'submit', 'class' => 'btn btn-primary w-100 py-2'])
+            ->addTagStart('p', 'You don\'t have an account? <a href="/register">Register</a>', ['class' => 'small py-1'])
+            ->addTagEnd('p')
+            ->addTagStart('p', '<a href="#">Forgot your password?</a>', ['class' => 'small py-1'])
+            ->addTagEnd('p')
             ->endForm();
 
 

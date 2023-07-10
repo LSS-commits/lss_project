@@ -16,6 +16,6 @@ class MainController extends Controller
     public function legal()
     {
         $title = 'LSSProject - Legal';
-        $this->render('/main/legal', compact('title'), 'home_template');
+        $this->render('main/legal', compact('title'), 'home_template');
     }
 }

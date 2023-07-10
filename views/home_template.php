@@ -11,7 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/home_styles.css">
-    <link rel="stylesheet" href="/css/login_styles.css">
+    <link rel="stylesheet" href="/css/form_styles.css">
   
     <title><?= $title ?? "LSSProject - Motus" ?></title>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
@@ -26,6 +26,8 @@
 
     <?php include_once ROOT.'/Views/includes/footer.php'; ?>
 
+    <!-- JS -->
+    <script src="/js/forms.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

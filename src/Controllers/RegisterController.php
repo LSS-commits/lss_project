@@ -18,9 +18,11 @@ class RegisterController extends Controller
      */
     public function index()
     {
+        var_dump($_POST);
+
         $form = new Form();
 
-        $form->startForm('#', 'post', ['class' => 'text-center'])
+        $form->startForm('#', 'post', ['class' => 'text-center', 'id' => 'registerForm'])
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('username', 'Username')
             ->addInput('text', 'username', ['id' => 'username', 'class' => 'form-control', 'placeholder' => 'AwesomeName', 'aria-placeholder' => 'AwesomeName', 'required' => true, 'maxlength' => '12'])
@@ -35,7 +37,9 @@ class RegisterController extends Controller
             ->addTagEnd('div')
             ->addTagStart('p', 'By clicking Accept and Register, you agree to the <a href="/main/legal" >Terms of Use and Privacy Policy</a> of LSSProject (Motus)', ['class' => 'small py-1'])
             ->addTagEnd('p')
-            ->addButton('Accept and Register', ['type' => 'button', 'class' => 'btn btn-success w-100 py-2 mt-1'])
+            ->addButton('Accept and Register', ['type' => 'submit', 'class' => 'btn btn-success w-100 py-2 mt-1'])
+            ->addTagStart('p', 'Already registered? <a href="/login">Sign in</a>', ['class' => 'small py-1'])
+            ->addTagEnd('p')
             ->endForm();
 
 

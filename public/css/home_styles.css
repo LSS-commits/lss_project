@@ -7,3 +7,12 @@
 .btn-primary:hover{
     opacity: .8 !important
 }
+
+
+/* PAGE LEGALE */
+.privacy{
+    max-width: 768px
+}
+.privacy a:hover{
+    color: var(--color1) !important
+}

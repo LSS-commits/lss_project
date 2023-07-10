@@ -49,11 +49,3 @@ img{
 .footer a:hover{
     color: var(--color1) !important
 }
-
-/* PAGE LEGALE */
-.privacy{
-    max-width: 768px
-}
-.privacy a:hover{
-    color: var(--color1) !important
-}

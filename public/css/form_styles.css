@@ -1,3 +1,5 @@
+/* FORMULAIRES */
+
 .form-signin {
   max-width: 330px;
   padding: 1rem
@@ -7,13 +9,18 @@
   z-index: 2
 }
 
-.form-signin input[type="email"] {
+.form-signin a:hover{
+  color: var(--color1)
+}
+
+/* FORMULAIRE DE CONNEXION */
+.login.form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0
 }
 
-.form-signin input[type="password"] {
+.login.form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0
