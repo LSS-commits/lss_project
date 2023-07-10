@@ -1,29 +1,34 @@
-let registerForm = document.getElementById("registerForm");
-let loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('passw');
+const message = document.getElementById('formMessage');
+
+if (registerForm != undefined) {
+    registerForm.addEventListener('submit', function (event){
+    
+        event.preventDefault();
+        
+        let request = new XMLHttpRequest();
+        let url = "register";
+
+        request.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                console.log('registered successfully');
+            }
+        };
+
+        let data = JSON.stringify({"username": username.value, "email": email.value, 'password': password.value});
+        console.log(data);
+
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-Type","application/json");
+        request.send(data);
+
+        registerForm.reset();
+    });
+}
 
 
-// var formElement = document.querySelector("form");
-// var formData = new FormData(formElement);
-
-// document.addEventListener('submit', function (event){
-//     if(registerForm != undefined){
-//         event.preventDefault();
-//         console.log('test ok');
-//     }
-//     if(loginForm != undefined){
-//         event.preventDefault();
-//         console.log('test ok');
-//     }
-
-//     // TODO: PB doesn't work all the time...
-//     var xmlhttp = new XMLHttpRequest();
-//       xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             for (const pair of formData.entries()){
-//                 console.log(pair);
-//             }
-//         }
-//       }
-//       xmlhttp.open("POST", "register", true);
-//       xmlhttp.send();
-// });
+const loginForm = document.getElementById("loginForm");

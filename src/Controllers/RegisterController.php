@@ -18,8 +18,12 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        var_dump($_POST);
+        // traiter les données du formulaire
+        $_POST = json_decode(file_get_contents('php://input'), true);
+        $formData = $_POST;
+        // TODO: pb = comment récupérer les données si la page et donc le controller n'est pas actualisé on submit ???
 
+        // créer le formulaire
         $form = new Form();
 
         $form->startForm('#', 'post', ['class' => 'text-center', 'id' => 'registerForm'])

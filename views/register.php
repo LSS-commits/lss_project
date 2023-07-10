@@ -6,4 +6,5 @@
     <h1 class="h3 mb-3 fw-normal text-center">Register</h1>
 
     <?= $registerForm ?>
+    <p class="lead text-center" id="formMessage"></p>
 </div>
