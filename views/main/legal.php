@@ -1,3 +1,4 @@
+<title><?= $title ?></title>
 <div class="container p-4 privacy">
     <h1 class="text-center">Terms of Use | Privacy Policy</h1>
     <p class="text-center">LSSProject</p>
