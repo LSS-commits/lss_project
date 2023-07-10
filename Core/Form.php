@@ -14,7 +14,7 @@ class Form
      * 
      * @return string Retourne une chaîne de caractères
      */
-    public function create()
+    public function createForm()
     {
         return $this->formCode;
     }
@@ -26,7 +26,7 @@ class Form
      * @param array $fields Tableau listant les champs obligatoires
      * @return bool Retourne un booléen
      */
-    public static function validate(array $form, array $fields)
+    public static function validateForm(array $form, array $fields)
     {
         // parcourir les champs ($fields)
         foreach ($fields as $field) {

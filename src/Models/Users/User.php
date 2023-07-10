@@ -20,6 +20,18 @@ class User extends Model
     }
 
     /**
+     * Récupérer un utilisateur à partir de son email
+     * Méthode spécifique à ce modèle, 
+     * vient surcharger les méthodes du modèle Model dont il dérive
+     * @param string $email
+     * @return mixed
+     */
+    public function findOneByEmail(string $email)
+    {
+        return $this->model_query("SELECT * FROM {$this->table} WHERE email = ?", [$email])->fetch();
+    }
+
+    /**
      * Obtenir la valeur de id
      */
     public function getId()

@@ -64,10 +64,9 @@ class Model extends Db
     // CREATE
     /**
      * Insertion d'un enregistrement suivant un tableau de données
-     * @param Model $model Objet à créer
      * @return bool
      */
-    public function create(Model $model)
+    public function create()
     {
         $fields = [];
         // pour insérer autant de valeurs qu'il y a de champs (paramètre fictif)
@@ -75,7 +74,7 @@ class Model extends Db
         $values = [];
 
         // boucler pour éclater le tableau
-        foreach($model as $field => $value){
+        foreach($this as $field => $value){
             // INSERT INTO table (field1, field2, etc) VALUES (?, ?, etc)
             if($value !== null && $field !== 'db' && $field !== 'table'){
                 $fields[] = $field;
@@ -96,23 +95,27 @@ class Model extends Db
     // UPDATE
     /**
      * Mise à jour d'un enregistrement suivant un tableau de données
-     * @param int $id id de l'enregistrement à modifier
-     * @param Model $model Objet à modifier
      * @return bool
      */
-    public function update(int $id, Model $model)
+    public function update()
     {
+
+        
         $fields = [];
         $values = [];
 
         // boucler pour éclater le tableau
-        foreach($model as $field => $value){
+        foreach($this as $field => $value){
             // UPDATE table SET field1 = ?, field2 = ?, etc WHERE id = ?
             if($value !== null && $field !== 'db' && $field !== 'table'){
                 $fields[] = "$field = ?";
                 $values[] = $value;
             }
         }
+
+        // TODO: Si ne fonctionne pas, remettre int $id en param
+        // * @param int $id id de l'enregistrement à modifier
+        $id = $this->id;
         // ajouter l'id dans les valeurs
         $values[] = $id;
 
@@ -143,7 +146,7 @@ class Model extends Db
 
     /**
      * Méthode pour vérifier si la requête doit être préparée (contre injections sql) ou non
-     * et exécuter les requêtes
+     * et exécuter la requête
      * @param string $sql requête SQL à exécuter
      * @param array|null $attributes attributs à ajouter à la requête
      * @return PDOStatement|False
@@ -168,10 +171,10 @@ class Model extends Db
 
     /**
      * Hydratation des données (générer automatiquement le contenu des objets)
-     * @param array $data Tableau associatif des données
+     * @param $data Tableau associatif de données ou objet
      * @return self Retourne l'objet hydraté
      */
-    public function hydrate(array $data)
+    public function hydrate($data)
     {
         foreach ($data as $key => $value){
             // récupérer le nom du setter correspondant à la clé (key)

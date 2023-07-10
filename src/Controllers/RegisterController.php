@@ -45,6 +45,6 @@ class RegisterController extends Controller
         // définir le titre de la page HTML
         $title = "LSSProject - Register";
 
-        $this->render('/register', ['title' => $title, 'form' => $form->create()], 'home_template');
+        $this->render('/register', ['title' => $title, 'registerForm' => $form->createForm()], 'home_template');
     }
 }

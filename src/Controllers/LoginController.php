@@ -39,6 +39,6 @@ class LoginController extends Controller
         $title = "LSSProject - Sign in";
 
         // envoyer les données au template
-        $this->render('/login', ['title' => $title, 'form' => $form->create()], 'home_template');
+        $this->render('/login', ['title' => $title, 'loginForm' => $form->createForm()], 'home_template');
     }
 }
