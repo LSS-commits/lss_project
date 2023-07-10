@@ -12,4 +12,9 @@ class MainController extends Controller
         // ici on n'envoie pas de données et utilise le template home_template
         $this->render('/index', [], 'home_template');
     }
+
+    public function legal()
+    {
+        $this->render('/main/legal', [], 'home_template');
+    }
 }

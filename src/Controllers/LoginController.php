@@ -23,11 +23,11 @@ class LoginController extends Controller
         $form = new Form();
 
         $form->startForm()
-            ->addTagStart('div', ['class' => 'form-floating'])
+            ->addTagStart('div', '', ['class' => 'form-floating'])
             ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'name@example.com','aria-placeholder' => 'name@example.com', 'required' => true])
             ->addLabelFor('email', 'Email address')
             ->addTagEnd('div')
-            ->addTagStart('div', ['class' => 'form-floating'])
+            ->addTagStart('div', '', ['class' => 'form-floating'])
             ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true])
             ->addLabelFor('passw', 'Password')
             ->addTagEnd('div')

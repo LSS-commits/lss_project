@@ -208,13 +208,14 @@ class Form
      * Générer une balise ouvrante en précisant son nom et ses attributs éventuels
      *
      * @param string $tag Nom de la balise
+     * @param string $text Eventuel contenu (vide par défaut) 
      * @param array $attributes Attributs complémentaires (tableau vide par défaut)
      * @return Form Retourne l'objet
      */
-    public function addTagStart(string $tag, array $attributes = []): self
+    public function addTagStart(string $tag, string $text = '', array $attributes = []): self
     {
         $this->formCode .= "<$tag ";
-        $this->formCode .= $attributes ? $this->addAttributes($attributes) . '>' : '>';
+        $this->formCode .= $attributes ? $this->addAttributes($attributes) . ">$text" : ">$text";
         return $this;
     }
 
@@ -222,12 +223,13 @@ class Form
      * Générer une balise fermante 
      *
      * @param string $tag Nom de la balise
+     * @param string $text Eventuel contenu (vide par défaut) 
      * @return Form Retourne l'objet
      */
-    public function addTagEnd(string $tag): self
+    public function addTagEnd(string $tag, string $text = ''): self
     {
-        $this->formCode .= "</$tag>";
-    
+        $this->formCode .= "$text</$tag>";
+
         return $this;
     }
 }
