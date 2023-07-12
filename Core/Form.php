@@ -35,11 +35,28 @@ class Form
                 // sortir et retourner false
                 return false;
             }
+
+            // TODO: ajouter méthodes pour valider username, email, password (inscription)
+            if ($field === "username") {
+                // regex + maxlength 12
+                echo "Username field";
+            }
+
+            if ($field === "email") {
+                // regex + maxlength 254
+                echo "Email field";
+            }
+
+            if ($field === "password") {
+                // regex + maxlength 254
+                echo "Password field";
+            }
+
         }
         return true;
     }
 
-    // TODO: ajouter méthodes pour valider username, email, password (inscription) et mot (jeu)
+    // TODO: ajouter méthode pour valider mot (jeu)
 
     /**
      * Ajouter les attributs envoyés à la balise HTML

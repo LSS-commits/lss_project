@@ -20,8 +20,15 @@ class RegisterController extends Controller
     {
         // traiter les données du formulaire
         $_POST = json_decode(file_get_contents('php://input'), true);
-        $formData = $_POST;
+
         // TODO: pb = comment récupérer les données si la page et donc le controller n'est pas actualisé on submit ???
+        if (Form::validateForm($_POST, ["username", "email", "password"])) {
+
+            // vérifier que l'email n'existe pas en bdd
+            
+            // le formulaire est valide
+            echo "FORM IS VALID";
+        }
 
         // créer le formulaire
         $form = new Form();
