@@ -3,6 +3,8 @@ const email = document.getElementById('email');
 const password = document.getElementById('passw');
 const message = document.getElementById('formMessage');
 
+// const page = document.querySelector('html');
+
 /* INSCRIPTION */
 const registerForm = document.getElementById("registerForm");
 const username = document.getElementById('username');
@@ -18,22 +20,29 @@ if (registerForm != undefined) {
         // url du fichier qui traitera les données du formulaire
         let url = "register";
 
+        // définir une fonction à exécuter lorsque le readyState (statut de la requête) change
         request.onreadystatechange = function() {
+            // succès de la requête
             if (this.readyState === 4 && this.status === 200) {
-                console.log('registered successfully');
+                // remplacer le contenu de la page par la réponse
+                // page.innerHTML = this.responseText;
+
+                // ou n'afficher que les messages reçus du controller (avant le rendu du contenu HTML)
+                let resp = this.responseText.split('<!DOCTYPE html>');
+                message.innerHTML = resp[0];
+                // console.log('registered successfully');
             }
-            // TODO: gérer les erreurs en front ???
         };
 
+        // convertir les données du formulaire en objet JSON
         let data = JSON.stringify({"username": username.value, "email": email.value, 'password': password.value});
-        console.log(data);
+        // TODO: pb => les données envoyées sont accessibles dans le navigateur (requête)
+        // console.log(data);
 
+        // envoyer les données dans la requête au format JSON
         request.open("POST", url, true);
         request.setRequestHeader("Content-Type","application/json");
         request.send(data);
-
-        // réinitialiser le formulaire
-        registerForm.reset();
     });
 }
 

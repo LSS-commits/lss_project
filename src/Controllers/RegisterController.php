@@ -18,21 +18,23 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        // traiter les données du formulaire
-        $_POST = json_decode(file_get_contents('php://input'), true);
+        // récupérer les données du formulaire (forms.js)
+        // $_POST = json_decode(file_get_contents('php://input'), true);
 
-        // TODO: pb = comment récupérer les données si la page et donc le controller n'est pas actualisé on submit ???
-        if (Form::validateForm($_POST, ["username", "email", "password"])) {
-
-            // vérifier que l'email n'existe pas en bdd
-            
-            // le formulaire est valide
-            echo "FORM IS VALID";
+        // valider le formulaire si $_POST contient des données
+        if (isset($_POST)) {
+            if (Form::validateForm($_POST, ["username", "email", "password"])) {
+    
+                // vérifier que l'email n'existe pas en bdd
+                
+                // le formulaire est valide
+                echo "FORM IS VALID";
+            }
         }
 
         // créer le formulaire
         $form = new Form();
-
+        
         $form->startForm('#', 'post', ['class' => 'text-center', 'id' => 'registerForm'])
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('username', 'Username')
@@ -54,8 +56,6 @@ class RegisterController extends Controller
             ->endForm();
 
 
-
-        // TODO: add maxlength and pattern + disabled (on button) attributes
 
         // définir le titre de la page HTML
         $title = "LSSProject - Register";

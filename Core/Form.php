@@ -20,6 +20,22 @@ class Form
     }
 
     /**
+     * Méthode pour tester les inputs (échapper HTML, retirer espaces inutiles et backslash)
+     *
+     * @param $data
+     * @return void
+     */
+    public static function testInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+
+        return $data;
+    }
+
+
+    /**
      * Valider si tous les champs proposés sont remplis
      * Cette méthode statique peut être utilisée sans instancier d'objet Form
      * @param array $form Tableau issu du formulaire ($_POST, $_GET)
@@ -53,6 +69,15 @@ class Form
             }
 
         }
+
+
+
+
+
+
+
+
+        // retourner true si le formulaire est valide
         return true;
     }
 
