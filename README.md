@@ -33,3 +33,5 @@ Project carried out as part of my application to enter the 3rd year of the Bache
 [PHP orienté objet / objected-oriented PHP](https://nouvelle-techno.fr/series/php-oriente-objet)
 
 [Enums, PHP 8.1](https://www.php.net/manual/fr/language.enumerations.examples.php)
+
+[Validation des formulaires PHP | PHP Form Validation](https://www.w3schools.com/php/php_form_validation.asp)
