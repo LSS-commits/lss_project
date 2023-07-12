@@ -21,9 +21,8 @@ class Form
 
     /**
      * Méthode pour tester les inputs (échapper HTML, retirer espaces inutiles et backslash)
-     *
-     * @param $data
-     * @return void
+     * lors de la validation du formulaire
+     * @param $data Champ à tester
      */
     public static function testInput($data)
     {
@@ -44,6 +43,11 @@ class Form
      */
     public static function validateForm(array $form, array $fields)
     {
+        // pour tester les entrées et initialiser des messages d'erreur
+        $username = $email = $password = "";
+        $usernameErr = $emailErr = $passwordErr = "";
+        $errors = [];
+
         // parcourir les champs ($fields)
         foreach ($fields as $field) {
             // si le champ est absent ou vide dans le formulaire
@@ -52,33 +56,56 @@ class Form
                 return false;
             }
 
-            // TODO: ajouter méthodes pour valider username, email, password (inscription)
+            
+            // valider username
             if ($field === "username") {
-                // regex + maxlength 12
-                echo "Username field";
+                $username = self::testInput($form[$field]);
+                // username = seulement lettres et chiffres ou erreur 
+                if (!preg_match("/^[a-zA-Z-0-9]*$/", $username)) {
+                    $usernameErr = "Invalid username, only letters and numbers allowed";
+                    $errors[] = $usernameErr;
+                }
+                // 12 caractères max
+                if (strlen($username) > 12) {
+                    $usernameErr = "Username must be 12 characters max";
+                    $errors[] = $usernameErr;
+                }
             }
 
+            // valider email
             if ($field === "email") {
-                // regex + maxlength 254
-                echo "Email field";
+                $email = self::testInput($form[$field]);
+                // email valide ? (longueur max de l'email => local (avant @) = 64, domaine (ex.com) = 255, totalité = 254)
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "Invalid email format";
+                    $errors[] = $emailErr;
+                }
             }
 
+            // valider password
             if ($field === "password") {
-                // regex + maxlength 254
-                echo "Password field";
+                $password = self::testInput($form[$field]);
+                // au moins = 1 chiffre, 1 lettre min, 1 lettre maj, 1 symbole spécifié
+                // seulement lettres, chiffres et symboles spécifiés
+                // longueur mot de passe = entre 8 et 50
+                if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\-_$%&+=§!\?])[0-9a-zA-Z@#\-_$%&+=§!\?]{8,50}$/", $password)) {
+                    $passwordErr = "Invalid password. Must be between 8 and 50 characters, and contain at least 1 number, 1 lowercase letter, 1 uppercase letter and 1 of the following symbols: @ # - _ $ % & + = § ! ?";
+                    $errors[] = $passwordErr;
+                }
             }
 
         }
 
-
-
-
-
-
-
-
-        // retourner true si le formulaire est valide
-        return true;
+        if ($errors) {
+            // afficher les erreurs et retourner false
+            foreach ($errors as $error) {
+                echo '<p class="text-danger">' . $error . '</p>';
+            }
+            return false;
+        }else{
+            // retourner true si le formulaire est valide
+            return true;
+        }
     }
 
     // TODO: ajouter méthode pour valider mot (jeu)

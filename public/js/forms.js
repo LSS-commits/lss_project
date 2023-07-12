@@ -49,3 +49,8 @@ if (registerForm != undefined) {
 
 /* CONNEXION */
 const loginForm = document.getElementById("loginForm");
+
+
+
+
+// TODO: ajouter la possibilité de voir le mot de passe

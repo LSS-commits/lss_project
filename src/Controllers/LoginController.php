@@ -29,7 +29,7 @@ class LoginController extends Controller
             ->addLabelFor('email', 'Email address')
             ->addTagEnd('div')
             ->addTagStart('div', '', ['class' => 'form-floating'])
-            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true])
+            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true, 'maxlength' => '50'])
             ->addLabelFor('passw', 'Password')
             ->addTagEnd('div')
             ->addButton('Sign in', ['type' => 'submit', 'class' => 'btn btn-primary w-100 py-2'])

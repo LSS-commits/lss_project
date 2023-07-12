@@ -19,8 +19,7 @@ class RegisterController extends Controller
     public function index()
     {
         // récupérer les données du formulaire (forms.js)
-        // $_POST = json_decode(file_get_contents('php://input'), true);
-
+        $_POST = json_decode(file_get_contents('php://input'), true);
         // valider le formulaire si $_POST contient des données
         if (isset($_POST)) {
             if (Form::validateForm($_POST, ["username", "email", "password"])) {
@@ -46,7 +45,7 @@ class RegisterController extends Controller
             ->addTagEnd('div')
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('passw', 'Password')
-            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true])
+            ->addInput('password', 'password', ['id' => 'passw', 'class' => 'form-control', 'placeholder' => 'Password', 'aria-placeholder' => 'Password', 'required' => true, 'maxlength' => '50'])
             ->addTagEnd('div')
             ->addTagStart('p', 'By clicking Accept and Register, you agree to the <a href="/main/legal" >Terms of Use and Privacy Policy</a> of LSSProject (Motus)', ['class' => 'small py-1'])
             ->addTagEnd('p')
