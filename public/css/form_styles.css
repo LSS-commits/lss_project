@@ -13,6 +13,7 @@
   color: var(--color1)
 }
 
+
 /* FORMULAIRE DE CONNEXION */
 .login.form-signin input[type="email"] {
   margin-bottom: -1px;
@@ -20,7 +21,7 @@
   border-bottom-left-radius: 0
 }
 
-.login.form-signin input[type="password"] {
+.login.form-signin .passwInput {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0
