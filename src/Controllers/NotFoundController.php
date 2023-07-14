@@ -15,7 +15,7 @@ class NotFoundController extends Controller
         $title = "LSSProject - Page not found";
         // définir le contenu
         $content = ["404", "Uh oh...", "It could be you, or it could be us, but there's no page here!"];
-        // envoyer le tout dans le home_template
-        $this->render('/notfound', compact('title', 'content'), 'home_template');
+        // envoyer les données au template
+        $this->render('/notfound', compact('title', 'content'), 'default_template');
     }
 }

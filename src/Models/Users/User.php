@@ -32,6 +32,22 @@ class User extends Model
     }
 
     /**
+     * Créer la session PHP de l'utilisateur 
+     * (données stockées et envoyées entre les pages)
+     *
+     * @return void
+     */
+    public function setSession()
+    {
+        $_SESSION['user'] = [
+            'id' => $this->id,
+            'username' => $this->username,
+            'email' => $this->email,
+            'roles' => $this->roles
+        ];
+    }
+
+    /**
      * Obtenir la valeur de id
      */
     public function getId()
@@ -112,9 +128,16 @@ class User extends Model
     }
 
     /**
-     * Définir la valeur de roles
+     * Définir la valeur de roles 
      */
-    public function setRoles($roles): self
+    
+    /**
+     * Définir la valeur de roles (par défaut USER)
+     *
+     * @param string $roles
+     * @return self
+     */
+    public function setRoles(string $roles = '["ROLE_USER"]'): self
     {
         $this->roles = $roles;
 

@@ -3,6 +3,10 @@
     <h1><?= $content[0] ?></h1>
     <h2><?= $content[1] ?></h2>
     <p><?= $content[2] ?></p>
-    <!-- TODO: Si l'utilisateur est connecté, dashboard, sinon accueil -->
-    <a href="/" class="link link-secondary">Back to home page</a>
+    <!-- Utilisateur connecté ? si oui dashboard, sinon accueil -->
+    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+        <a href=<?= "/dashboard/user/" . $_SESSION['user']['id']; ?> class="link link-secondary">Back to dashboard</a>
+    <?php else: ?>
+        <a href="/" class="link link-secondary">Back to home page</a>
+    <?php endif; ?>
 </div>

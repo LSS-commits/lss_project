@@ -20,14 +20,17 @@ class Form
     }
 
     /**
-     * Méthode pour tester les inputs (échapper HTML, retirer espaces inutiles et backslash)
+     * Méthode pour nettoyer les inputs
      * lors de la validation du formulaire
      * @param $data Champ à tester
      */
     public static function testInput($data)
     {
+        // retirer espace avant et après
         $data = trim($data);
+        // supprimer les antislashes
         $data = stripslashes($data);
+        // convertir balises HTML en entités HTML
         $data = htmlspecialchars($data);
 
         return $data;
@@ -60,14 +63,9 @@ class Form
             // valider username
             if ($field === "username") {
                 $username = self::testInput($form[$field]);
-                // username = seulement lettres et chiffres ou erreur 
-                if (!preg_match("/^[a-zA-Z-0-9]*$/", $username)) {
-                    $usernameErr = "Invalid username, only letters and numbers allowed";
-                    $errors[] = $usernameErr;
-                }
-                // 12 caractères max
-                if (strlen($username) > 12) {
-                    $usernameErr = "Username must be 12 characters max";
+                // username = seulement lettres et chiffres et 12 caractères max
+                if (!preg_match("/^[a-zA-Z-0-9]{1,12}$/", $username)) {
+                    $usernameErr = "Invalid username. Must be 1 to 12 characters and contain only letters without accents and numbers";
                     $errors[] = $usernameErr;
                 }
             }
@@ -77,7 +75,7 @@ class Form
                 $email = self::testInput($form[$field]);
                 // email valide ? (longueur max de l'email => local (avant @) = 64, domaine (ex.com) = 255, totalité = 254)
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emailErr = "Invalid email format";
+                    $emailErr = "Invalid email format. Valid email example (no accent, no uppercase letter): name@example.domain";
                     $errors[] = $emailErr;
                 }
             }

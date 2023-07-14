@@ -3,6 +3,7 @@
 namespace LSSProject\Src\Controllers;
 
 use LSSProject\Core\Form;
+use LSSProject\Src\Models\Users\User;
 
 /**
  * Controller de la page d'inscription du site
@@ -20,28 +21,57 @@ class RegisterController extends Controller
     {
         // récupérer les données du formulaire (forms.js)
         $_POST = json_decode(file_get_contents('php://input'), true);
+
         // valider le formulaire si $_POST contient des données
         if (isset($_POST)) {
             if (Form::validateForm($_POST, ["username", "email", "password"])) {
-    
-                // vérifier que l'email n'existe pas en bdd
                 
-                // le formulaire est valide
-                echo "FORM IS VALID";
+                // nettoyer les champs => protéger contre injections SQL et failles XSS (injections de scripts malveillants dans contenu reçu par le navig)
+                // strip_tags retire octets nuls, balises et entités HTML et PHP de la chaîne
+
+                // nettoyer username
+                $username = strip_tags($_POST["username"]);
+
+                // nettoyer email 
+                $email = strip_tags($_POST["email"]);
+                // vérifier si l'email n'est pas déjà enregistré
+                $user = new User;
+                $userExits = $user->findOneByEmail($email);
+                if ($userExits) {
+                    // l'utilisateur existe, renvoyer message d'erreur
+                    echo 'User already registered with this email';
+                    exit;
+                }
+
+                // chiffrer le mot de passe
+                $pw = password_hash($_POST["password"], PASSWORD_ARGON2I);
+
+                // hydrater l'utilisateur (roles = USER par défaut)
+                $user->setUsername($username)
+                    ->setEmail($email)
+                    ->setPassword($pw)
+                    ->setRoles();
+
+                // stocker l'utilisateur en bdd
+                $user->create();
+
+
+                // TODO: le formulaire est valide, rediriger vers le dashboard
+                echo "User successfully registered";
             }
         }
 
         // créer le formulaire
-        $form = new Form();
+        $form = new Form;
         
         $form->startForm('#', 'post', ['class' => 'text-center', 'id' => 'registerForm'])
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('username', 'Username')
-            ->addInput('text', 'username', ['id' => 'username', 'class' => 'form-control', 'placeholder' => 'AwesomeName', 'aria-placeholder' => 'AwesomeName', 'pattern' => '[a-zA-Z-0-9]{1,12}$', 'title' => 'Username must be 1 to 12 characters and contain only letters and numbers', 'required' => true])
+            ->addInput('text', 'username', ['id' => 'username', 'class' => 'form-control', 'placeholder' => 'AwesomeName', 'aria-placeholder' => 'AwesomeName', 'pattern' => '[a-zA-Z-0-9]{1,12}$', 'title' => 'Username must be 1 to 12 characters and contain only letters without accents and numbers', 'required' => true])
             ->addTagEnd('div')
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('email', 'Email address')
-            ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'name@example.com','aria-placeholder' => 'name@example.com', 'pattern' => '[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$', 'title' => 'Valid email example: name@example.domain', 'required' => true])
+            ->addInput('email', 'email', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'name@example.com','aria-placeholder' => 'name@example.com', 'pattern' => '[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$', 'title' => 'Valid email example (no accent, no uppercase letter): name@example.domain', 'required' => true])
             ->addTagEnd('div')
             ->addTagStart('div', '', ['class' => 'py-2'])
             ->addLabelFor('passw', 'Password')
@@ -63,6 +93,7 @@ class RegisterController extends Controller
         // définir le titre de la page HTML
         $title = "LSSProject - Register";
 
+        // envoyer les données au template
         $this->render('/register', ['title' => $title, 'registerForm' => $form->createForm()], 'home_template');
     }
 }

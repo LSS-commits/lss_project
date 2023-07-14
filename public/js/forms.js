@@ -14,8 +14,8 @@ const loginForm = document.getElementById("loginForm");
 
 // messages d'erreurs (regex patterns dans le controller)
 const errors = {
-    'username': 'Username must be 1 to 12 characters and contain only letters and numbers',
-    'email': 'Valid email example: name@example.domain',
+    'username': 'Username must be 1 to 12 characters and contain only letters without accents and numbers',
+    'email': 'Valid email example (no accent, no uppercase letter): name@example.domain',
     'password': 'Valid password must be between 8 and 50 characters, and contain at least 1 number, 1 lowercase letter, 1 uppercase letter and 1 of the following symbols: @ # - _ $ % & + = § ! ?',
 }
 
@@ -82,7 +82,6 @@ if (registerForm) {
 
         // convertir les données du formulaire en objet JSON
         let data = JSON.stringify({"username": username.value, "email": email.value, 'password': password.value});
-        // TODO: pb => les données envoyées sont accessibles dans le navigateur (requête)
         // console.log(data);
 
         // envoyer les données dans la requête au format JSON

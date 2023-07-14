@@ -14,6 +14,12 @@ class Main
     // démarrer l'application
     public function start()
     {
+
+        // démarrer la session PHP ($_SESSION) pour stocker données et les envoyer d'une page à l'autre grâce au cookie de session généré
+        // session obligatoirement démarrée avant toute sortie de code (HTML, PHP)
+        session_start();
+
+
         // retirer un éventuel trailing slash de l'url (pour éviter le duplicate content)
         // récupérer l'url
         $uri = $_SERVER['REQUEST_URI'];
