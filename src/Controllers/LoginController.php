@@ -19,12 +19,13 @@ class LoginController extends Controller
      */
     public function index()
     {
-        
+
         // récupérer les données du formulaire (fichier js)
         $_POST = json_decode(file_get_contents('php://input'), true);
 
         // valider le formulaire si $_POST contient des données
         if (isset($_POST) && !empty($_POST)) {
+
 
             // valider les données du formulaire
             if (Form::validateForm($_POST, ["email", "password"])) {
@@ -44,11 +45,7 @@ class LoginController extends Controller
                     // renvoyer un code 400
                     http_response_code(400);
 
-                    // envoyer un message de session
-                    $_SESSION['error'] = "Incorrect email and/or password";
-
-                    // TODO: remove echo and use session error
-                    echo 'email does not exist';
+                    echo "Incorrect email and/or password";
                     exit;
                 }
 
@@ -73,11 +70,7 @@ class LoginController extends Controller
                     // renvoyer un code 400
                     http_response_code(400);
 
-                    // envoyer un message de session
-                    $_SESSION['error'] = "Incorrect email and/or password";
-
-                    // TODO: remove echo and use session error
-                    echo "incorrect password";
+                    echo "Incorrect email and/or password";
                     exit;
                 }
             }
@@ -127,7 +120,8 @@ class LoginController extends Controller
         // détruit la variable user (données de l'utilisateur) dans la session
         unset($_SESSION['user']);
 
-        // TODO: supprimer le cookie de session ???
+        // supprime le cookie de session lié à la session mais un nouveau cookie est créé lors de la rediction sur la page d'accueil
+        // setcookie(session_name(), "", time()-3600, '/');
 
         // retourner sur la page d'accueil 
         header('Location: /');
