@@ -115,6 +115,7 @@ class Model extends Db
 
         // TODO: Si ne fonctionne pas, remettre int $id en param
         // * @param int $id id de l'enregistrement à modifier
+
         $id = $this->id;
         // ajouter l'id dans les valeurs
         $values[] = $id;

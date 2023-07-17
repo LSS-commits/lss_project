@@ -3,6 +3,7 @@
 namespace LSSProject\Src\Controllers;
 
 use LSSProject\Core\Form;
+use LSSProject\Src\Models\Users\User;
 
 /**
  * Controller de la page de connexion du site
@@ -19,6 +20,68 @@ class LoginController extends Controller
     public function index()
     {
         
+        // récupérer les données du formulaire (fichier js)
+        $_POST = json_decode(file_get_contents('php://input'), true);
+
+        // valider le formulaire si $_POST contient des données
+        if (isset($_POST) && !empty($_POST)) {
+
+            // valider les données du formulaire
+            if (Form::validateForm($_POST, ["email", "password"])) {
+                // le formulaire est complet
+
+                // nettoyer l'email
+                $email = Form::testInput($_POST["email"]);
+                $email = strip_tags($email);
+
+                
+                // chercher l'email entré en bdd
+                $usersModel = new User;
+                $userArray = $usersModel->findOneByEmail($email);
+
+                // si l'utilisateur n'existe pas
+                if (!$userArray) {
+                    // renvoyer un code 400
+                    http_response_code(400);
+
+                    // envoyer un message de session
+                    $_SESSION['error'] = "Incorrect email and/or password";
+
+                    // TODO: remove echo and use session error
+                    echo 'email does not exist';
+                    exit;
+                }
+
+
+                // l'utilisateur existe
+                // hydrater l'objet (récup données de l'utilisateur)
+                // pour ignorer erreur extension intelephense (héritage non géré correctement)
+                /** @var LSSProject\Src\Models\Users\User $user **/
+                $user = $usersModel->hydrate($userArray);
+
+                // vérifier si le mot de passe est correct
+                if(password_verify($_POST["password"], $user->getPassword())){
+                    // le mot de passe est correct
+                    // créer la session
+                    $user->setSession();
+
+                    // rediriger vers le dashboard (voir fichier js)
+                    header('Location: /dashboard/user/' . $user->getId());
+                    exit;
+
+                }else{
+                    // renvoyer un code 400
+                    http_response_code(400);
+
+                    // envoyer un message de session
+                    $_SESSION['error'] = "Incorrect email and/or password";
+
+                    // TODO: remove echo and use session error
+                    echo "incorrect password";
+                    exit;
+                }
+            }
+        }
        
 
         // créer le formulaire

@@ -29,6 +29,6 @@ class DashboardController extends Controller
         $title = "LSSProject - Dashboard";
 
         // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
-        $this->render('logged/dashboard', compact('title', 'user', 'words'));
+        $this->render('logged/dashboard', compact('title', 'user', 'words'), 'default_template');
     }
 }

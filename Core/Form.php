@@ -46,11 +46,7 @@ class Form
      */
     public static function validateForm(array $form, array $fields)
     {
-        // pour tester les entrées et initialiser des messages d'erreur
-        $username = $email = $password = "";
-        $usernameErr = $emailErr = $passwordErr = "";
-        $errors = [];
-
+        
         // parcourir les champs ($fields)
         foreach ($fields as $field) {
             // si le champ est absent ou vide dans le formulaire
@@ -58,8 +54,28 @@ class Form
                 // sortir et retourner false
                 return false;
             }
+        }
 
-            
+        // le formulaire est complet
+        return true;
+    }
+
+    /**
+     * Valider si tous les champs proposés respectent les règles définies
+     * Cette méthode statique peut être utilisée sans instancier d'objet Form
+     * @param array $form Tableau issu du formulaire ($_POST, $_GET)
+     * @param array $fields Tableau listant les champs obligatoires
+     * @return bool Retourne un booléen
+     */
+    public static function validateRegistration(array $form, array $fields)
+    {
+        // pour tester les entrées et initialiser des messages d'erreur
+        $username = $email = $password = "";
+        $usernameErr = $emailErr = $passwordErr = "";
+        $errors = [];
+
+        foreach ($fields as $field) {
+
             // valider username
             if ($field === "username") {
                 $username = self::testInput($form[$field]);
@@ -91,22 +107,29 @@ class Form
                     $errors[] = $passwordErr;
                 }
             }
-
         }
 
+        // le formulaire n'est pas valide
         if ($errors) {
             // afficher les erreurs et retourner false
             foreach ($errors as $error) {
                 echo '<p class="text-danger">' . $error . '</p>';
             }
+
             return false;
+
         }else{
             // retourner true si le formulaire est valide
             return true;
         }
     }
 
+
+
     // TODO: ajouter méthode pour valider mot (jeu)
+
+
+
 
     /**
      * Ajouter les attributs envoyés à la balise HTML

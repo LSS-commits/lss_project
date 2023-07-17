@@ -13,6 +13,7 @@ class User extends Model
     protected $email;
     protected $password;
     protected $roles;
+    protected $createdAt;
 
     public function __construct()
     {
@@ -31,10 +32,10 @@ class User extends Model
         return $this->model_query("SELECT * FROM {$this->table} WHERE email = ?", [$email])->fetch();
     }
 
+    
     /**
      * Créer la session PHP de l'utilisateur 
      * (données stockées et envoyées entre les pages)
-     *
      * @return void
      */
     public function setSession()
@@ -43,7 +44,8 @@ class User extends Model
             'id' => $this->id,
             'username' => $this->username,
             'email' => $this->email,
-            'roles' => $this->roles
+            'roles' => $this->roles,
+            'createdAt' => $this->createdAt
         ];
     }
 
@@ -140,6 +142,24 @@ class User extends Model
     public function setRoles(string $roles = '["ROLE_USER"]'): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de createdAt
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Définir la valeur de createdAt (valeur par défaut en bdd)
+     */
+    public function setCreatedAt($createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

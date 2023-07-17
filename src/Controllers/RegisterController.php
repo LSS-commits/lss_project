@@ -21,10 +21,11 @@ class RegisterController extends Controller
     {
         // récupérer les données du formulaire (forms.js)
         $_POST = json_decode(file_get_contents('php://input'), true);
-
+        
         // valider le formulaire si $_POST contient des données
-        if (isset($_POST)) {
-            if (Form::validateForm($_POST, ["username", "email", "password"])) {
+        if (isset($_POST) && !empty($_POST)) {
+            // valider les données du formulaire
+            if (Form::validateForm($_POST, ["username", "email", "password"]) && Form::validateRegistration($_POST, ["username", "email", "password"])) {
                 
                 // nettoyer les champs => protéger contre injections SQL et failles XSS (injections de scripts malveillants dans contenu reçu par le navig)
                 // strip_tags retire octets nuls, balises et entités HTML et PHP de la chaîne
@@ -34,16 +35,17 @@ class RegisterController extends Controller
 
                 // nettoyer email 
                 $email = strip_tags($_POST["email"]);
-                // vérifier si l'email n'est pas déjà enregistré
+
+                // vérifier si l'email n'est pas déjà enregistré en bdd
                 $user = new User;
                 $userExits = $user->findOneByEmail($email);
                 if ($userExits) {
-                    // l'utilisateur existe, renvoyer message d'erreur
+                    // l'utilisateur existe déjà, renvoyer message d'erreur
                     echo 'User already registered with this email';
                     exit;
                 }
 
-                // chiffrer le mot de passe
+                // chiffrer le mot de passe (ARGON2I depuis PHP 7.2)
                 $pw = password_hash($_POST["password"], PASSWORD_ARGON2I);
 
                 // hydrater l'utilisateur (roles = USER par défaut)
@@ -52,7 +54,7 @@ class RegisterController extends Controller
                     ->setPassword($pw)
                     ->setRoles();
 
-                // stocker l'utilisateur en bdd
+                // enregistrer l'utilisateur en bdd
                 $user->create();
 
 

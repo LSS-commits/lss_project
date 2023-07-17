@@ -13,6 +13,7 @@
                 }
             ?>
         </p>
+        <p>Registered since: <?= $user->createdAt ?></p>
         <p>Coming soon: change password</p>
         <a href="/dashboard/user/<?= $user->id ?>" class="link link-secondary">Back to dashboard</a>
     </article>

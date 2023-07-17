@@ -8,3 +8,6 @@
     <?= $registerForm ?>
     
 </div>
+
+<!-- JS -->
+<script type="module" src="/js/forms.js"></script>
