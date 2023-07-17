@@ -1,7 +1,7 @@
 <!-- Utilisateur connecté ? -->
 <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
 <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
       <div class="col-md-3 mb-2 mb-md-0">
         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
           <img src="/assets/images/logo_purple_vertical.png" alt="lss project logo" width="70" height="70">
@@ -16,7 +16,7 @@
       </ul>
 
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-secondary me-2"><i class="fa-solid fa-power-off"></i> Logout</button>
+        <a href="/login/logout" class="btn btn-outline-secondary me-2" role="button"><i class="fa-solid fa-power-off"></i> Logout</a>
       </div>
     </header>
   </div>

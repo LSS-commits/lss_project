@@ -116,4 +116,25 @@ class LoginController extends Controller
         // envoyer les données au template
         $this->render('/login', ['title' => $title, 'loginForm' => $form->createForm()], 'home_template');
     }
+
+    /**
+     * Déconnecter l'utilisateur
+     *
+     * @return exit
+     */
+    public function logout(){
+
+        // détruit la variable user (données de l'utilisateur) dans la session
+        unset($_SESSION['user']);
+
+        // TODO: supprimer le cookie de session ???
+
+        // retourner sur la page d'accueil 
+        header('Location: /');
+
+        // ou rester sur la page actuelle
+        // header('Location: '. $_SERVER['HTTP_REFERER']);
+
+        exit;
+    }
 }

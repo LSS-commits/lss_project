@@ -33,6 +33,17 @@ img{
     border-radius: 5px
 }
 
+
+
+/* HEADER */
+.header .btn{
+    font-family: 'Noto Sans', sans-serif !important
+}
+.header .btn:hover{
+    color: #fff !important
+}
+
+
 /* FOOTER */
 .footer {
     width: 100%;

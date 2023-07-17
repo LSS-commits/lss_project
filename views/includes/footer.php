@@ -1,4 +1,4 @@
-<div class="bg-dark footer text-secondary">
+<div class="bg-dark text-secondary footer">
     <footer class="d-flex flex-wrap justify-content-left align-items-center py-3 my-2">
         <div class="d-flex align-items-center">
             <a href="/" class="text-decoration-none mx-2">
