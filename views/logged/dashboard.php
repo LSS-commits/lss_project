@@ -1,8 +1,17 @@
 <title><?= $title ?></title>
 
 <div class="container">
+    <!-- pour les nouveaux inscrits -->
+    <?php if (isset($_SESSION['registered'])): ?>
+    
+        <div class="alert alert-success text-center" role="alert">
+        <?php echo $_SESSION['registered']; unset($_SESSION['registered']); ?>
+        </div>
+
+    <?php endif; ?>
+    
     <h1>Dashboard</h1>
-    <p>Welcome back <?= $user->username?></p>
+    <p>Welcome <?= $_SESSION['user']['username'] ?></p>
     
     <?php foreach ($words as $word): ?>
         <article>

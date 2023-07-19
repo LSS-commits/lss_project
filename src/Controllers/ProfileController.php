@@ -18,6 +18,9 @@ class ProfileController extends Controller
         // instancier le modèle correspondant à la table 'users'
         $userModel = new User();
 
+        // TODO: au lieu de passer id, créer un token de session et le passer
+        // chercher à savoir à quel moment lors de la navigation l'utilisateur a un id valide qui puisse être utilisé pour enregitrer les jeux
+        
         // on va chercher l'utilisateur connecté
         $user = $userModel->find($userId);
 

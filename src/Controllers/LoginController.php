@@ -62,6 +62,8 @@ class LoginController extends Controller
                     // créer la session
                     $user->setSession();
 
+                    // TODO: au lieu de passer id, créer un token de session et le passer
+                    // chercher à savoir à quel moment lors de la navigation l'utilisateur a un id valide qui puisse être utilisé pour enregitrer les jeux
                     // rediriger vers le dashboard (voir fichier js)
                     header('Location: /dashboard/user/' . $user->getId());
                     exit;

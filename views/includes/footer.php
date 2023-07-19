@@ -1,8 +1,8 @@
 <div class="bg-dark text-secondary footer">
-    <footer class="d-flex flex-wrap justify-content-left align-items-center py-3 my-2">
+    <footer class="d-flex flex-wrap justify-content-left align-items-center my-2">
         <div class="d-flex align-items-center">
             <a href="/" class="text-decoration-none mx-2">
-                <img src="/assets/images/icon.png" alt="lss project icon" width="50" height="50">
+                <img src="/assets/images/icon.png" alt="lss project icon" width="40" height="40">
             </a>
             <span class="mx-2">&copy; 2023 LSSProject - Motus, Inc</span>
         </div>
@@ -30,5 +30,3 @@
         </ul>
     </footer>
 </div>
-
-<!-- TODO: add terms of use and privacy policy -->

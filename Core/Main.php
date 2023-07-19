@@ -74,15 +74,14 @@ class Main
                         $controller->index();
                         
                     }else{
-                        // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
-                        (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
+                            // si il reste des params, on les passe à la méthode (1 par 1 grâce à call_user_func_array, au lieu d'un tableau)
+                            (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();
                     }
                     
                 }else{
                     
                     // la méthode n'existe pas dans le controller, afficher la page 404
                     http_response_code(404);
-                    // echo "This page does not exist";
                     $controller = new NotFoundController();
                     $controller->index();
                 }  

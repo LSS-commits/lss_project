@@ -37,9 +37,12 @@ class RegisterController extends Controller
                 $email = strip_tags($_POST["email"]);
 
                 // vérifier si l'email n'est pas déjà enregistré en bdd
-                $user = new User;
-                $userExits = $user->findOneByEmail($email);
+                $newUser = new User;
+                $userExits = $newUser->findOneByEmail($email);
                 if ($userExits) {
+                    // renvoyer un code 400
+                    http_response_code(400);
+
                     // l'utilisateur existe déjà, renvoyer message d'erreur
                     echo 'User already registered with this email';
                     exit;
@@ -49,17 +52,29 @@ class RegisterController extends Controller
                 $pw = password_hash($_POST["password"], PASSWORD_ARGON2I);
 
                 // hydrater l'utilisateur (roles = USER par défaut)
-                $user->setUsername($username)
+                $newUser->setUsername($username)
                     ->setEmail($email)
                     ->setPassword($pw)
                     ->setRoles();
 
                 // enregistrer l'utilisateur en bdd
-                $user->create();
+                $newUser->create();
+
+                // ici id et createdAt = null
+                $newUser->setSession();
 
 
-                // TODO: le formulaire est valide, rediriger vers le dashboard
-                echo "User successfully registered";
+                // trouver l'utilisateur créé pour récupérer son id généré en bdd
+                $user = $newUser->findOneByEmail($_SESSION['user']['email']);
+                $_SESSION['user']['id'] = $user->id;
+                $_SESSION['user']['createdAt'] = $user->createdAt;
+
+                // rediriger vers la page de connexion pour confirmer l'inscription 
+                $_SESSION['registered'] = "You have been successfully registered. Start a new game or navigate through website!";
+                
+                // TODO: au lieu de passer id, créer un token de session et le passer dans l'url
+                header('Location: /dashboard/user/' . $user->id);
+                exit;
             }
         }
 
