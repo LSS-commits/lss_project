@@ -11,6 +11,7 @@
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/game/user/" class="nav-link px-2 text-black">New game</a></li>
         <li><a href="/dashboard/user/<?= $_SESSION['user']['id'] ?>" class="nav-link px-2 text-secondary">Dashboard</a></li>
+        <li><a href="/walloffame/user/" class="nav-link px-2 text-secondary">Wall of Fame</a></li>
         <li><a href="/profile/user/<?= $_SESSION['user']['id'] ?>" class="nav-link px-2 text-secondary">Profile</a></li>
       </ul>
 

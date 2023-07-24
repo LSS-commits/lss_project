@@ -1,7 +1,7 @@
 <title><?= $title ?></title>
 
 <div class="container walloffame">
-    <h1>Wall Of Fame</h1>
+    <h1>Wall of Fame</h1>
 
     <div class="motivation bg-light rounded p-3">
         <h3>Some words of motivation for the day:</h3>

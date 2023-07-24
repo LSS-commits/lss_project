@@ -13,6 +13,6 @@ class WallOfFameController extends Controller
     public function user(){
 
         $title = "LSSProject - Wall Of Fame";
-        $this->render('logged/walloffame', compact('title'), 'home_template');
+        $this->render('logged/walloffame', compact('title'), 'default_template');
     }
 }
