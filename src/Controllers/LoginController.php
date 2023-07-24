@@ -42,8 +42,8 @@ class LoginController extends Controller
 
                 // si l'utilisateur n'existe pas
                 if (!$userArray) {
-                    // renvoyer un code 400
-                    http_response_code(400);
+                    // renvoyer un code 401 (non authentifié)
+                    http_response_code(401);
 
                     echo "Incorrect email and/or password";
                     exit;
@@ -69,8 +69,8 @@ class LoginController extends Controller
                     exit;
 
                 }else{
-                    // renvoyer un code 400
-                    http_response_code(400);
+                    // renvoyer un code 401 (non authentifié)
+                    http_response_code(401);
 
                     echo "Incorrect email and/or password";
                     exit;

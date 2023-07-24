@@ -40,8 +40,8 @@ class RegisterController extends Controller
                 $newUser = new User;
                 $userExits = $newUser->findOneByEmail($email);
                 if ($userExits) {
-                    // renvoyer un code 400
-                    http_response_code(400);
+                    // renvoyer un code 401 (non authentifié)
+                    http_response_code(401);
 
                     // l'utilisateur existe déjà, renvoyer message d'erreur
                     echo 'User already registered with this email';
