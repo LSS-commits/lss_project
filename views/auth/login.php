@@ -2,6 +2,11 @@
 
 <title><?= $title ?></title>
 
+<?php if (!empty($_SESSION['error']['unauthorized'])): ?>
+  <div class="container alert alert-danger text-center" role="alert">
+    <?php echo $_SESSION['error']['unauthorized']; unset($_SESSION['error']['unauthorized']); ?>
+  </div>
+<?php endif; ?>
 
 <main class="login form-signin w-100 m-auto">
   <img class="mb-4 mx-auto d-block" src="/assets/images/logo_purple_vertical.png" alt="lss project logo" height="80">

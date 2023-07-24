@@ -25,6 +25,17 @@ a, .btn{
     transition: .3s !important
 }
 
+.btn-primary{
+    background-color: var(--color1) !important;
+    border-color: var(--color1) !important
+}
+
+.btn-primary:hover{
+    opacity: .8 !important;
+    color: #fff !important
+}
+
+
 .link:hover{
     color: var(--color1) !important
 }
@@ -34,13 +45,20 @@ img{
 }
 
 
-
 /* HEADER */
 .header .btn{
     font-family: 'Noto Sans', sans-serif !important
 }
 .header .btn:hover{
     color: #fff !important
+}
+
+.header .nav-link::after{
+    content: "";
+    display: block;
+    width: inherit;
+    height: 1px;
+    background-color: var(--color1)
 }
 
 

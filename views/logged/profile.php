@@ -1,6 +1,6 @@
 <title><?= $title ?></title>
 <div class="container">
-    <h1>User Profile</h1>
+    <h1>Your Profile</h1>
     <article>
         <h3>Username: <?= $user->username ?></h3>
         <p>Email: <?= $user->email ?></p>
@@ -13,7 +13,7 @@
                 }
             ?>
         </p>
-        <p>Registered since: <?= $user->createdAt ?></p>
+        <p>Registered since: <?= date_format(date_create($user->createdAt), "D, d F Y - H:i") ?></p>
         <p>Coming soon: change password</p>
         <a href="/dashboard/user/<?= $user->id ?>" class="link link-secondary">Back to dashboard</a>
     </article>

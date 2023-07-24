@@ -27,8 +27,8 @@ const submitForm = function (form, errorField, fileUrl, ...fields) {
                     let page = document.querySelector('html');
                     page.innerHTML = this.responseText;
 
-                }else if(this.readyState === 4 && this.status === 400){
-                    // si la réponse renvoie un code 400 (Bad Request), afficher les erreurs
+                }else if(this.readyState === 4 && this.status === 401){
+                    // si la réponse renvoie un code 401 (unauthorized), afficher les erreurs
                     // n'afficher que les messages générés dans les controllers (sont avant le rendu du contenu HTML)
                     // séparer la chaîne reçue et récup le premier du tableau (= messages)
                     let resp = this.responseText.split('<!DOCTYPE html>');

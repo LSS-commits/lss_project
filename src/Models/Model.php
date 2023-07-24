@@ -60,6 +60,16 @@ class Model extends Db
         return $this->model_query("SELECT * FROM {$this->table} WHERE id = $id")->fetch();
     }
 
+    /**
+     * Sélection d'un enregistrement de manière aléatoire
+     *
+     * @return array Tableau contenant l'enregistrement trouvé
+     */
+    public function findRandom()
+    {
+        return $this->model_query("SELECT * FROM {$this->table} ORDER BY RAND() LIMIT 1")->fetch();
+    }
+
 
     // CREATE
     /**
@@ -100,7 +110,6 @@ class Model extends Db
     public function update()
     {
 
-        
         $fields = [];
         $values = [];
 

@@ -13,6 +13,8 @@ class Word extends Model
     protected $word;
     protected $length;
     protected $difficulty;
+    protected $trivia;
+    protected $triviaJoke;
 
     public function __construct()
     {
@@ -98,6 +100,42 @@ class Word extends Model
             return $this;
         }
         // difficulty est null par défaut
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de trivia
+     */
+    public function getTrivia()
+    {
+        return $this->trivia;
+    }
+
+    /**
+     * Définir la valeur de trivia
+     */
+    public function setTrivia($trivia): self
+    {
+        $this->trivia = $trivia;
+
+        return $this;
+    }
+
+    /**
+     * Obtenir la valeur de triviaJoke
+     */
+    public function getTriviaJoke()
+    {
+        return $this->triviaJoke;
+    }
+
+    /**
+     * Définir la valeur de triviaJoke
+     */
+    public function setTriviaJoke($triviaJoke): self
+    {
+        $this->triviaJoke = $triviaJoke;
+
         return $this;
     }
 }
