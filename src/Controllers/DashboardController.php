@@ -28,10 +28,13 @@ class DashboardController extends Controller
         $wordModel = new Word();
         $words = $wordModel->findAll();
 
+        // récupérer un mot aléatoire en bdd pour afficher définition (trivia)
+        $trivia = $wordModel->findRandom();
+
         // définir le titre de la page HTML
         $title = "LSSProject - Dashboard";
 
         // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
-        $this->render('logged/dashboard', compact('title', 'user', 'words'), 'default_template');
+        $this->render('logged/dashboard', compact('title', 'user', 'words', 'trivia'), 'default_template');
     }
 }
