@@ -2,7 +2,7 @@
 namespace LSSProject\Src\Models\Game;
 
 use LSSProject\Src\Models\Model;
-use LSSProject\Src\Models\DifficultyLevel;
+use LSSProject\Src\Models\Game\DifficultyLevel;
 
 /**
  * Modèle pour la table words

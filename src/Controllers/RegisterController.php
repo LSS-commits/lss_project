@@ -111,6 +111,6 @@ class RegisterController extends Controller
         $title = "LSSProject - Register";
 
         // envoyer les données au template
-        $this->render('/register', ['title' => $title, 'registerForm' => $form->createForm()], 'home_template');
+        $this->render('auth/register', ['title' => $title, 'registerForm' => $form->createForm()], 'home_template');
     }
 }

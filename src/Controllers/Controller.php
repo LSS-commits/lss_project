@@ -31,6 +31,6 @@ abstract class Controller
         $content = ob_get_clean();
 
         // envoyer le tout au template (template indiqué dans le controller ou template par défaut)
-        require_once ROOT.'/Views/' . $template . '.php';  
+        require_once ROOT.'/Views/templates/' . $template . '.php';  
     }
 }

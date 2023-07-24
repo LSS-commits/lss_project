@@ -61,7 +61,7 @@ class Game extends Model
     /**
      * Obtenir la valeur de wordId
      */
-    public function getWordId()
+    public function getWordId():int
     {
         // TODO: récupérer l'id du mot joué
         return $this->wordId;
@@ -70,7 +70,7 @@ class Game extends Model
     /**
      * Définir la valeur de wordId
      */
-    public function setWordId($wordId): self
+    public function setWordId(int $wordId): self
     {
         // TODO: récupérer l'id du mot joué
         $this->wordId = $wordId;
@@ -98,7 +98,7 @@ class Game extends Model
     /**
      * Obtenir la valeur de userId
      */
-    public function getUserId()
+    public function getUserId():int
     {
         // TODO: récupérer l'id du joueur connecté
         return $this->userId;
@@ -107,7 +107,7 @@ class Game extends Model
     /**
      * Définir la valeur de userId
      */
-    public function setUserId($userId): self
+    public function setUserId(int $userId): self
     {
         // TODO: récupérer l'id du joueur connecté
         $this->userId = $userId;

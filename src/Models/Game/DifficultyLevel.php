@@ -1,5 +1,5 @@
 <?php
-namespace LSSProject\Src\Models;
+namespace LSSProject\Src\Models\Game;
 
 use ReflectionClass;
 
