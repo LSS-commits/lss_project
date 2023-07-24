@@ -1,5 +1,5 @@
 <div class="bg-dark text-secondary footer">
-    <footer class="d-flex flex-wrap justify-content-left align-items-center my-2">
+    <footer class="d-flex flex-wrap justify-content-left align-items-center mt-2 pt-3">
         <div class="d-flex align-items-center">
             <a href="/" class="text-decoration-none mx-2">
                 <img src="/assets/images/icon.png" alt="lss project icon" width="40" height="40">
