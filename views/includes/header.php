@@ -1,5 +1,5 @@
 <!-- Utilisateur connecté ? -->
-<?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+<?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id']) && !empty($_SESSION['user']['token'])): ?>
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom header">
       <div class="col-md-3 mb-2 mb-md-0">
@@ -9,10 +9,10 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/game/user/" class="nav-link px-2 text-black">New game</a></li>
-        <li><a href="/dashboard/user/<?= $_SESSION['user']['id'] ?>" class="nav-link px-2 text-secondary">Dashboard</a></li>
-        <li><a href="/walloffame/user/" class="nav-link px-2 text-secondary">Wall of Fame</a></li>
-        <li><a href="/profile/user/<?= $_SESSION['user']['id'] ?>" class="nav-link px-2 text-secondary">Profile</a></li>
+        <li><a href="/game/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-black active" aria-current="page">New game</a></li>
+        <li><a href="/dashboard/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Dashboard</a></li>
+        <li><a href="/walloffame/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Wall of Fame</a></li>
+        <li><a href="/profile/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Profile</a></li>
       </ul>
 
       <div class="col-md-3 text-end">

@@ -61,6 +61,12 @@ img{
     background-color: var(--color1)
 }
 
+.active{
+    padding: 5px;
+    border: 1px solid var(--color1);
+    border-radius: 3px
+}
+
 
 /* FOOTER */
 .footer {
