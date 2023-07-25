@@ -7,6 +7,30 @@ namespace LSSProject\Src\Controllers;
 abstract class Controller 
 {
     /**
+     * Vérifier si l'utilisateur est authentifié
+     * sinon le rediriger vers la page de connexion
+     * @return bool
+     */
+    public function userIsAuthenticated()
+    {
+        // vérifier si l'utilisateur est connecté
+        if(!isset($_SESSION) || empty($_SESSION['user']['id']) || empty($_SESSION['user']['token'])){
+            // utilisateur non connecté
+            $_SESSION['error']['unauthorized'] = "You must be authenticated to access this page";
+
+            // renvoyer un code 401 (unauthorized, non authentifié)
+            http_response_code(401);
+
+            // rediriger vers page de connexion
+            header('Location: /login');
+            exit;
+        }else{
+            return true;
+        }
+    }
+
+
+    /**
      * Afficher une vue
      *
      * @param string $file

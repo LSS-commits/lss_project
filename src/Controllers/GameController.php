@@ -6,27 +6,18 @@ class GameController extends Controller
 {
     /**
      * Lancer et enregistrer une partie
-     *
+     * @param string $token
      * @return void
      */
-    public function user()
+    public function user(string $token)
     {
         // vérifier si l'utilisateur est connecté
-        if (isset($_SESSION['user']) && !empty($_SESSION['user']['id'])) {
-            // l'utilisateur est connecté
-        }else{
-            // utilisateur non connecté
-            $_SESSION['error']['unauthorized'] = "You must be authenticated to access this page";
-
-            // renvoyer un code 401 (unauthorized, non authentifié)
-            http_response_code(401);
-
-            // rediriger vers page de connexion
-            header('Location: /login');
-            exit;
+        if ($this->userIsAuthenticated() === true) {
+            // TODO: code here
         }
 
-        // TODO: mettre en paramètre le token de session ?
+
+        // TODO: avant démarrage du jeu, formulaire pour choisir le niveau, pas de rechargement de la page => selon la difficulté, aller récupérer un mot correspondant en base de données et commencer le jeu
 
         $title = "LSSProject - Playing";
 

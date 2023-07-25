@@ -69,11 +69,14 @@ class RegisterController extends Controller
                 $_SESSION['user']['id'] = $user->id;
                 $_SESSION['user']['createdAt'] = $user->createdAt;
 
-                // rediriger vers la page de connexion pour confirmer l'inscription 
+                // message à afficher sur la page de redirection
                 $_SESSION['registered'] = "You have been successfully registered. Start a new game or navigate through website!";
                 
-                // TODO: au lieu de passer id, créer un token de session et le passer dans l'url
-                header('Location: /dashboard/user/' . $user->id);
+                $token = md5(uniqid());
+                $_SESSION['user']['token'] = $token;
+
+                // rediriger vers le dashboard (voir fichier js)
+                header('Location: /dashboard/user/' . $_SESSION['user']['token']);
                 exit;
             }
         }

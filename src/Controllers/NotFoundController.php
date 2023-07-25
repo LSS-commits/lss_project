@@ -2,14 +2,16 @@
 
 namespace LSSProject\Src\Controllers;
 
-// TODO: à revoir
 class NotFoundController extends Controller
 {
+    /**
+     * Cette méthode affichera une page 404
+     * (notfound)
+     * @return void
+     */
     public function index()
     {
-        // sans envoyer de données
-        // include_once ROOT.'/Views/notfound.php';
-
+        
         // pour envoyer des données à la vue
         // définir le titre de la page HTML
         $title = "LSSProject - Page not found";
