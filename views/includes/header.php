@@ -21,3 +21,6 @@
     </header>
   </div>
 <?php endif; ?>  
+
+<!-- JS -->
+<script src="/js/main.js"></script>

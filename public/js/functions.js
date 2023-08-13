@@ -49,7 +49,7 @@ const submitForm = function (form, errorField, fileUrl, ...fields) {
     }
 }
 
-/* VALIDATION (affichage des messages d'erreur lors de la saisie) */
+/* VALIDATION DES FORMULAIRES (affichage des messages d'erreur lors de la saisie) */
 const validateForm = function (form, errorField, errorsList) {
 
     if (form) {
