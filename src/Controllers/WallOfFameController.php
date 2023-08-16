@@ -18,6 +18,6 @@ class WallOfFameController extends Controller
         }
         
         $title = "LSSProject - Wall Of Fame";
-        $this->render('logged/walloffame', compact('title'), 'default_template');
+        $this->render('logged/walloffame', compact('title'));
     }
 }

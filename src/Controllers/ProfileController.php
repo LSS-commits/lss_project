@@ -23,6 +23,6 @@ class ProfileController extends Controller
         $title = "LSSProject - Profile";
 
         // pour afficher les données dans la vue correspondante => render('/dir/file', ['variable' => données]) ou render('dir/file', compact('variable'))
-        $this->render('logged/profile', compact('title'), 'default_template');
+        $this->render('logged/profile', compact('title'));
     }
 }

@@ -1,0 +1,40 @@
+/* STYLE DES PAGES UTILISATEUR */
+
+a:hover{
+    color: var(--color1) !important
+}
+
+
+/* HEADER */
+.header .btn{
+    font-family: 'Noto Sans', sans-serif !important
+}
+.header .btn:hover{
+    color: #fff !important
+}
+
+.active{
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    color: black !important
+}
+
+
+/* FOOTER POUR PAGES UTILISATEUR */
+.footer {
+    width: 100%;
+    /* left: 0; */
+    /* bottom: 0; */
+    /* position: fixed */
+}
+
+.footer i {
+    font-size: 18px;
+    color: var(--color1)
+}
+
+.footer a:hover{
+    color: var(--color1) !important
+}

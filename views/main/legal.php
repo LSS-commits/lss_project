@@ -49,5 +49,6 @@
     </div>
 
     <p class="text-center"><strong>do-not-contact-us@lssproject.test</strong></p>
-    
+    <a href="/" class="text-decoration-none text-dark link-style float-start mt-3">Back to home page</a>
+
 </div>

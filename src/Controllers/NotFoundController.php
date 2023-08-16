@@ -18,6 +18,6 @@ class NotFoundController extends Controller
         // définir le contenu
         $content = ["404", "Uh oh...", "It could be you, or it could be us, but there's no page here!"];
         // envoyer les données au template
-        $this->render('/notfound', compact('title', 'content'), 'default_template');
+        $this->render('/notfound', compact('title', 'content'));
     }
 }

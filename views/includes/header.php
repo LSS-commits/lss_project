@@ -9,14 +9,14 @@
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/game/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-black active" aria-current="page">New game</a></li>
-        <li><a href="/dashboard/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Dashboard</a></li>
-        <li><a href="/walloffame/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Wall of Fame</a></li>
-        <li><a href="/profile/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary">Profile</a></li>
+        <li><a href="/game/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary link-style" aria-current="page">New Game</a></li>
+        <li><a href="/dashboard/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary link-style">Dashboard</a></li>
+        <li><a href="/walloffame/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary link-style">Wall of Fame</a></li>
+        <li><a href="/profile/user/<?= $_SESSION['user']['token'] ?>" class="nav-link px-2 text-secondary link-style">Profile</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
-        <a href="/login/logout" class="btn btn-outline-secondary me-2" role="button"><i class="fa-solid fa-power-off"></i> Logout</a>
+        <a href="/login/logout" class="btn btn-outline-dark me-2" role="button"><i class="fa-solid fa-power-off"></i> Logout</a>
       </div>
     </header>
   </div>

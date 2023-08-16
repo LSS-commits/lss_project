@@ -106,7 +106,7 @@ class RegisterController extends Controller
             ->addTagStart('div', '', ['id' => 'formMessage', 'class' => 'text-center text-danger py-1'])
             ->addTagEnd('div')
             ->addButton('Accept and Register', ['type' => 'submit', 'class' => 'btn btn-success w-100 py-2 mt-1'])
-            ->addTagStart('p', 'Already registered? <a href="/login">Sign in</a>', ['class' => 'small py-1'])
+            ->addTagStart('p', 'Already registered? <a href="/login">Sign in</a>', ['class' => 'small pt-2'])
             ->addTagEnd('p')
             ->endForm();
         
@@ -114,6 +114,6 @@ class RegisterController extends Controller
         $title = "LSSProject - Register";
 
         // envoyer les données au template
-        $this->render('auth/register', ['title' => $title, 'registerForm' => $form->createForm()], 'home_template');
+        $this->render('auth/register', ['title' => $title, 'registerForm' => $form->createForm()], 'loggedoff_template');
     }
 }

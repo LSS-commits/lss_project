@@ -35,52 +35,21 @@ a, .btn{
     color: #fff !important
 }
 
-
 .link:hover{
     color: var(--color1) !important
+}
+
+/* Soulignement des liens */
+.link-style::after {
+    content: "";
+    display: block;
+    width: inherit;
+    height: 1px;
+    background-color: var(--color1);
+    margin-top: -2px;
 }
 
 img{
     border-radius: 5px
 }
 
-
-/* HEADER */
-.header .btn{
-    font-family: 'Noto Sans', sans-serif !important
-}
-.header .btn:hover{
-    color: #fff !important
-}
-
-.header .nav-link::after{
-    content: "";
-    display: block;
-    width: inherit;
-    height: 1px;
-    background-color: var(--color1)
-}
-
-.active{
-    padding: 5px;
-    border: 1px solid var(--color1);
-    border-radius: 3px
-}
-
-
-/* FOOTER */
-.footer {
-    width: 100%;
-    /* left: 0; */
-    /* bottom: 0; */
-    /* position: fixed */
-}
-
-.footer i {
-    font-size: 18px;
-    color: var(--color1)
-}
-
-.footer a:hover{
-    color: var(--color1) !important
-}

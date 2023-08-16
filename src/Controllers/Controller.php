@@ -38,7 +38,7 @@ abstract class Controller
      * @param string $template
      * @return void
      */
-    public function render(string $file, array $data = [], string $template = 'default_template')
+    public function render(string $file, array $data = [], string $template = 'loggedin_template')
     {
         // extraire le contenu de $data
         extract($data);

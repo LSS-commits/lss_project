@@ -99,9 +99,9 @@ class LoginController extends Controller
             ->addTagStart('div', '', ['id' => 'formMessage', 'class' => 'text-center text-danger py-1'])
             ->addTagEnd('div')
             ->addButton('Sign in', ['type' => 'submit', 'class' => 'btn btn-primary w-100 py-2'])
-            ->addTagStart('p', 'You don\'t have an account? <a href="/register">Register</a>', ['class' => 'small py-1'])
+            ->addTagStart('p', 'You don\'t have an account? <a href="/register">Register</a>', ['class' => 'small pt-2'])
             ->addTagEnd('p')
-            ->addTagStart('p', '<a href="#">Forgot your password?</a>', ['class' => 'small py-1'])
+            ->addTagStart('p', '<a href="#">Forgot your password?</a>', ['class' => 'small'])
             ->addTagEnd('p')
             ->endForm();
 
@@ -110,7 +110,7 @@ class LoginController extends Controller
         $title = "LSSProject - Sign in";
 
         // envoyer les données au template
-        $this->render('auth/login', ['title' => $title, 'loginForm' => $form->createForm()], 'home_template');
+        $this->render('auth/login', ['title' => $title, 'loginForm' => $form->createForm()], 'loggedoff_template');
     }
 
     /**

@@ -1,0 +1,28 @@
+/* STYLE DES PAGES VISITEUR */
+
+/* PAGE LEGALE */
+.privacy{
+    max-width: 768px
+}
+
+.privacy a:hover{
+    color: var(--color1) !important
+}
+
+/* FOOTER POUR PAGES VISITEUR */
+.small-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: -100px
+}
+
+.small-footer i {
+    font-size: 15px;
+    color: var(--color1)
+}
+
+.small-footer a:hover{
+    color: var(--color1) !important
+}

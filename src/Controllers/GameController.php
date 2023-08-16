@@ -17,10 +17,10 @@ class GameController extends Controller
         }
 
 
-        // TODO: avant démarrage du jeu, formulaire pour choisir le niveau, pas de rechargement de la page => selon la difficulté, aller récupérer un mot correspondant en base de données et commencer le jeu
+        // TODO: avant démarrage du jeu, formulaire pour choisir le niveau => selon la difficulté, aller récupérer un mot correspondant en base de données et commencer le jeu
 
         $title = "LSSProject - Playing";
 
-        $this->render('logged/game', compact('title'), ('default_template'));
+        $this->render('logged/game', compact('title'));
     }
 }
