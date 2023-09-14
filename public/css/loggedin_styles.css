@@ -1,4 +1,11 @@
 /* STYLE DES PAGES UTILISATEUR */
+/* TODO: pour garder le footer au bas de la page */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
 
 a:hover{
     color: var(--color1) !important
@@ -24,10 +31,7 @@ a:hover{
 
 /* FOOTER POUR PAGES UTILISATEUR */
 .footer {
-    width: 100%;
-    /* left: 0; */
-    /* bottom: 0; */
-    /* position: fixed */
+    width: 100%
 }
 
 .footer i {
