@@ -2,7 +2,11 @@
 
 :root{
     --color1: #8449BC; /* purple */
-    --color2: #212529 /* bootstrap dark */
+    --color2: #212529; /* bootstrap dark */
+    --primary: #0d6efd; /* bootstrap blue */
+    --success: #198754; /* bootstrap green */
+    --warning: #ffc107; /* bootstrap orange */
+    --danger: #dc3545 /* bootstrap red */
 }
 
 

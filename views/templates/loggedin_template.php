@@ -11,6 +11,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/loggedin_styles.css">
+    <link rel="stylesheet" href="/css/form_styles.css">
 
     <title><?= $title ?? "LSSProject - Motus" ?></title>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">

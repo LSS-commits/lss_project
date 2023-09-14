@@ -1,3 +1,5 @@
+/********** FORMULAIRES **********/ 
+
 /* EMPECHER LE RECHARGEMENT DE LA PAGE ET ENVOYER LES DONNEES DU FORMULAIRE AU CONTROLLER AU FORMAT JSON */
 const submitForm = function (form, errorField, fileUrl, ...fields) {
 

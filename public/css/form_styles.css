@@ -26,3 +26,21 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0
 }
+
+/* FORMULAIRE DU CHOIX DE NIVEAU */
+.game-level-form .form-check *{
+  cursor: pointer
+}
+/* radio : couleur différente selon le niveau */
+.game-level-form .form-check .form-check-input.easy:checked {
+  background-color: var(--success) !important;
+  border-color: var(--success) !important;
+}
+.game-level-form .form-check .form-check-input.normal:checked {
+  background-color: var(--warning) !important;
+  border-color: var(--warning) !important;
+}
+.game-level-form .form-check .form-check-input.hard:checked {
+  background-color: var(--danger) !important;
+  border-color: var(--danger) !important;
+}

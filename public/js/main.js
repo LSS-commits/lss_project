@@ -1,4 +1,4 @@
-/* HEADER : changer les style des liens actifs dans le menu */
+/* HEADER : changer les styles des liens actifs dans le menu */
 let navLink = document.querySelectorAll('.nav-link');
 
 if (navLink) {
